@@ -5,6 +5,14 @@ function resolveSrc(_path) {
 }
 // vue.config.js
 module.exports = {
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/eric-project/'
+    : '/'
+}
+module.exports = {
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/tsmc-project/'
+    : '/'
   lintOnSave: true,
   configureWebpack: {
     // Set up all the aliases we use in our app.
