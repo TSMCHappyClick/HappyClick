@@ -17,7 +17,6 @@
           <b-card no-body class="bg-secondary border-0" img-src="img/brand/HappyClick.png" style="max-width: 40rem;">
             <b-card-header class="bg-transparent pb-5">
               <div class="text-muted text-center mt-2 mb-4"><big>Welcome to Happy Click</big></div>
-              
             </b-card-header>
             <b-card-body class="px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">

@@ -9,7 +9,7 @@
     >
       <div slot="brand" class="navbar-wrapper">
         <b-navbar-brand to="/">
-          <img src="img/brand/white.png">
+          <img src="img/brand/HappyClick.png">
         </b-navbar-brand>
       </div>
 
@@ -18,7 +18,7 @@
          <b-row>
            <b-col cols="6" class="collapse-brand">
              <router-link to="/">
-               <img src="img/brand/green.png">
+               <img src="img/brand/HappyClick.png">
              </router-link>
            </b-col>
            <b-col cols="6" class="collapse-close">
@@ -30,10 +30,6 @@
          </b-row>
        </div>
          <b-navbar-nav  class="align-items-lg-center ml-lg-auto">
-           <b-nav-item to="/dashboard">
-               <i class="ni ni-planet"></i>
-               <span class="nav-link-inner--text">Dashboard</span>
-           </b-nav-item>
            <b-nav-item to="/register">
                <i class="ni ni-circle-08"></i>
                <span class="nav-link-inner--text">Register</span>
@@ -41,10 +37,6 @@
            <b-nav-item to="/login">
                <i class="ni ni-key-25"></i>
                <span class="nav-link-inner--text">Login</span>
-           </b-nav-item>
-           <b-nav-item to="/profile">
-               <i class="ni ni-single-02"></i>
-               <span class="nav-link-inner--text">Profile</span>
            </b-nav-item>
        </b-navbar-nav>
      </template>
