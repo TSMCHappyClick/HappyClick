@@ -2,17 +2,6 @@
   <div>
     <!-- Header -->
     <div class="header bg-gradient-success py-7 py-lg-8 pt-lg-9">
-      <b-container class="container">
-        <div class="header-body text-center mb-7">
-          <b-row class="justify-content-center">
-            <b-col xl="5" lg="6" md="8" class="px-5">
-              <h1 class="text-white">Create an account</h1>
-              <p class="text-lead text-white">Use these awesome forms to login or create new account in your project for
-                free.</p>
-            </b-col>
-          </b-row>
-        </div>
-      </b-container>
       <div class="separator separator-bottom separator-skew zindex-100">
         <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
              xmlns="http://www.w3.org/2000/svg">
@@ -25,23 +14,14 @@
       <!-- Table -->
       <b-row class="justify-content-center">
         <b-col lg="6" md="8" >
-          <b-card no-body class="bg-secondary border-0">
+          <b-card no-body class="bg-secondary border-0" img-src="img/brand/HappyClick.png" style="max-width: 40rem;">
             <b-card-header class="bg-transparent pb-5">
-              <div class="text-muted text-center mt-2 mb-4"><small>Sign up with</small></div>
-              <div class="text-center">
-                <a href="#" class="btn btn-neutral btn-icon mr-4">
-                  <span class="btn-inner--icon"><img src="img/icons/common/github.svg"></span>
-                  <span class="btn-inner--text">Github</span>
-                </a>
-                <a href="#" class="btn btn-neutral btn-icon">
-                  <span class="btn-inner--icon"><img src="img/icons/common/google.svg"></span>
-                  <span class="btn-inner--text">Google</span>
-                </a>
-              </div>
+              <div class="text-muted text-center mt-2 mb-4"><big>Welcome to Happy Click</big></div>
+              
             </b-card-header>
             <b-card-body class="px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <small>Or sign up with credentials</small>
+                <medium>Sign up</medium>
               </div>
               <validation-observer v-slot="{handleSubmit}" ref="formValidator">
                 <b-form role="form" @submit.prevent="handleSubmit(onSubmit)">
@@ -52,6 +32,15 @@
                               name="Name"
                               :rules="{required: true}"
                               v-model="model.name">
+                  </base-input>
+
+                  <base-input alternative
+                              class="mb-3"
+                              prepend-icon="ni ni-badge"
+                              placeholder="Employee ID"
+                              name="Employee ID"
+                              :rules="{required: true}"
+                              v-model="model.employeeID">
                   </base-input>
 
                   <base-input alternative
@@ -103,6 +92,7 @@
       return {
         model: {
           name: '',
+          employeeID: '',
           email: '',
           password: '',
           agree: false
