@@ -5,7 +5,7 @@ const ghpages = require('gh-pages');
 
 const options = {
     branch: 'gh-pages',
-    repo: 'https://github.com/anitahuang121/HappyClick.git' // project github repo
+    repo: 'https://github.com/TSMCHappyClick/HappyClick.git' // project github repo
 };
 
 const callback = err => {
