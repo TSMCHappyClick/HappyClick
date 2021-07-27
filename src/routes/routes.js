@@ -6,6 +6,23 @@ import NotFound from '@/views/NotFoundPage.vue';
 const routes = [
   {
     path: '/',
+    redirect: 'login',
+    component: AuthLayout,
+    children: [
+      {
+        path: '/login',
+        name: 'login',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Login.vue')
+      },
+      {
+        path: '/register',
+        name: 'register',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Register.vue')
+      }
+    ]
+  },
+  {
+    path: '/',
     redirect: 'dashboard',
     component: DashboardLayout,
     children: [
@@ -39,24 +56,7 @@ const routes = [
       }
     ]
   },
-  {
-    path: '/',
-    redirect: 'login',
-    component: AuthLayout,
-    children: [
-      {
-        path: '/login',
-        name: 'login',
-        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Login.vue')
-      },
-      {
-        path: '/register',
-        name: 'register',
-        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Register.vue')
-      },
-      { path: '*', component: NotFound }
-    ]
-  }
+  { path: '*', component: NotFound }
 ];
 
 export default routes;

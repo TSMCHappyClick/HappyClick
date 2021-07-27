@@ -19,7 +19,7 @@
             </b-card-header>
             <b-card-body class="px-lg-5 py-lg-5">
               <div class="text-center text-muted mb-4">
-                <medium>Sign in</medium>
+                <big>Sign in</big>
               </div>
               <validation-observer v-slot="{handleSubmit}" ref="formValidator">
                 <b-form role="form" @submit.prevent="handleSubmit(onSubmit)">
@@ -44,7 +44,7 @@
 
                   <b-form-checkbox v-model="model.rememberMe">Remember me</b-form-checkbox>
                   <div class="text-center">
-                    <base-button type="primary" native-type="submit" class="my-4">Sign in</base-button>
+                    <base-button type="primary" native-type="submit" class="my-4" @click="onSubmit">Sign in</base-button>
                   </div>
                 </b-form>
               </validation-observer>
@@ -77,6 +77,16 @@
     methods: {
       onSubmit() {
         // this will be called only after form is valid. You can do api call here to login
+
+        let auth = true;
+        console.log(this.model.email);
+        if (this.model.email != 'test@gmail.com' || this.model.password != 'test')
+          auth = false;
+        if( auth )
+          this.$router.push('/dashboard');
+        else
+          alert('login failed')
+
       }
     }
   };
