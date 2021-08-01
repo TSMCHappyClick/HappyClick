@@ -4,7 +4,7 @@
     <template v-slot:header>
       <b-row align-v="center">
         <b-col>
-          <h3 class="mb-0">Page visits</h3>
+          <h3 class="mb-0">施打率較低部門</h3>
         </b-col>
         <b-col class="text-right">
           <a href="#!" class="btn btn-sm btn-primary">See all</a>
@@ -15,23 +15,23 @@
     <el-table class="table-responsive table"
               :data="tableData"
               header-row-class-name="thead-light">
-      <el-table-column label="Page name"
+      <el-table-column label="部門"
                        min-width="130px"
                        prop="page">
         <template v-slot="{row}">
           <div class="font-weight-600">{{row.page}}</div>
         </template>
       </el-table-column>
-      <el-table-column label="Visitors"
+      <el-table-column label="總人數"
                        min-width="70px"
                        prop="visitors">
       </el-table-column>
-      <el-table-column label="Unique users"
+      <el-table-column label="施打人數"
                        min-width="90px"
                        prop="unique">
       </el-table-column>
 
-      <el-table-column label="Bounce rate"
+      <el-table-column label="施打比例"
                        min-width="90px"
                        prop="bounceRate">
         <template v-slot="{row}">
@@ -56,31 +56,32 @@
       return {
         tableData: [
           {
-            page: '/argon/',
+            page: 'Team1',
             visitors: '4,569',
             unique: '340',
             bounceRate: '46,53%'
           },
           {
-            page: '/argon/index.html',
+            page: 'Team2',
             visitors: '3,985',
             unique: '319',
             bounceRate: '46,53%'
           },
           {
-            page: '/argon/charts.html',
+            page: 'Team3',
             visitors: '3,513',
             unique: '294',
             bounceRate: '36,49%'
           },
+          
           {
-            page: '/argon/tables.html',
+            page: 'Team4',
             visitors: '2,050',
             unique: '147',
             bounceRate: '50,87%'
           },
           {
-            page: '/argon/profile.html',
+            page: 'Team5',
             visitors: '1,795',
             unique: '190',
             bounceRate: '46,53%'
