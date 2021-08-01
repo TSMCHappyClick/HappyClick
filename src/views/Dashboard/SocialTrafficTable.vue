@@ -3,7 +3,7 @@
     <template v-slot:header>
       <b-row align-v="center">
         <b-col>
-          <h3 class="mb-0">Social traffic</h3>
+          <h3 class="mb-0">各廠牌施打比率</h3>
         </b-col>
         <b-col class="text-right">
           <base-button size="sm" type="primary">See all</base-button>
@@ -16,13 +16,13 @@
       class="table-responsive table"
       :data="tableData"
       header-row-class-name="thead-light">
-      <el-table-column label="Referral" min-width="115px" prop="name">
+      <el-table-column label="疫苗廠牌" min-width="115px" prop="name">
         <template v-slot="{row}">
           <div class="font-weight-600">{{row.name}}</div>
         </template>
       </el-table-column>
 
-      <el-table-column label="Visitors" min-width="110px" prop="visitors">
+      <el-table-column label="施打人數" min-width="110px" prop="people">
       </el-table-column>
 
       <el-table-column min-width="220px" prop="progress">
@@ -53,34 +53,28 @@
       return {
         tableData: [
           {
-            name: 'Facebook',
-            visitors: '1,480',
-            progress: 60,
+            name: 'Moderna 莫德納',
+            people: '30',
+            progress: 20,
             progressType: 'gradient-danger',
           },
           {
-            name: 'LinkedIn',
-            visitors: '5,480',
-            progress: 70,
+            name: 'AstraZeneca',
+            people: '480',
+            progress: 55,
             progressType: 'gradient-success',
           },
           {
-            name: 'Google',
-            visitors: '4,807',
-            progress: 80,
+            name: 'Pfizer-BioNTech',
+            people: '0',
+            progress: 0,
             progressType: 'gradient-primary',
           },
           {
-            name: 'Instagram',
-            visitors: '3,678',
-            progress: 75,
+            name: '高端',
+            people: '0',
+            progress: 0,
             progressType: 'gradient-info',
-          },
-          {
-            name: 'Twitter',
-            visitors: '2,645',
-            progress: 30,
-            progressType: 'gradient-warning',
           }
         ]
       }

@@ -5,7 +5,7 @@
       <template slot="links">
         <sidebar-item
           :link="{
-            name: 'Dashboard',
+            name: '各廠區施打比率一覽',
             path: '/dashboard',
             icon: 'ni ni-tv-2 text-primary',
           }"
