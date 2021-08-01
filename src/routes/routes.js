@@ -53,6 +53,11 @@ const routes = [
         path: '/reserve',
         name: 'reserve',
         component: () => import(/* webpackChunkName: "demo" */ '../views/Reserve.vue')
+      },
+      {
+        path: '/check',
+        name: 'check',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Check.vue')
       }
     ]
   },
