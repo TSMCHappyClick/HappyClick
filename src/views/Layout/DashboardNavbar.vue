@@ -66,7 +66,7 @@
             <span>Support</span>
           </b-dropdown-item>
           <div class="dropdown-divider"></div>
-          <b-dropdown-item href="#!">
+          <b-dropdown-item href="" @click="logout">
             <i class="ni ni-user-run"></i>
             <span>Logout</span>
           </b-dropdown-item>
@@ -116,6 +116,9 @@ export default {
     },
     closeDropDown() {
       this.activeNotifications = false;
+    },
+    logout(){
+        this.$router.push('/login');
     }
   }
 };

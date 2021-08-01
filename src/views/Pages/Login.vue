@@ -25,11 +25,11 @@
                 <b-form role="form" @submit.prevent="handleSubmit(onSubmit)">
                   <base-input alternative
                               class="mb-3"
-                              name="Email"
-                              :rules="{required: true, email: true}"
-                              prepend-icon="ni ni-email-83"
-                              placeholder="Email"
-                              v-model="model.email">
+                              prepend-icon="ni ni-badge"
+                              placeholder="Employee ID"
+                              name="Employee ID"
+                              :rules="{required: true}"
+                              v-model="model.employeeID">
                   </base-input>
 
                   <base-input alternative
@@ -44,7 +44,7 @@
 
                   <b-form-checkbox v-model="model.rememberMe">Remember me</b-form-checkbox>
                   <div class="text-center">
-                    <base-button type="primary" native-type="submit" class="my-4" @click="onSubmit">Sign in</base-button>
+                    <base-button type="primary" native-type="submit" class="my-4">Sign in</base-button>
                   </div>
                 </b-form>
               </validation-observer>
@@ -64,23 +64,28 @@
   </div>
 </template>
 <script>
+  import CryptoJS from '@/util/CryptoJS.js'
   export default {
     data() {
       return {
         model: {
-          email: '',
+          employeeID: '',
           password: '',
-          rememberMe: false
+          rememberMe: true
         }
       };
     },
     methods: {
       onSubmit() {
         // this will be called only after form is valid. You can do api call here to login
+        let a = CryptoJS.encrypt(this.model.password)
+        let b = CryptoJS.decrypt(a)
+        console.log(a);
+        console.log(b);
 
         let auth = true;
-        console.log(this.model.email);
-        if (this.model.email != 'test@gmail.com' || this.model.password != 'test')
+        console.log(this.model.employeeID);
+        if (this.model.employeeID != '120878' || this.model.password != '120878')
           auth = false;
         if( auth )
           this.$router.push('/dashboard');

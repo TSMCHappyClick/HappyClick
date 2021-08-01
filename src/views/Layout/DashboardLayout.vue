@@ -31,6 +31,14 @@
         </sidebar-item>
 
         <sidebar-item
+                  :link="{
+                    name: 'Check',
+                    path: '/check',
+                    icon: 'ni ni-check-bold text-green'
+                  }">
+        </sidebar-item>
+
+        <sidebar-item
               :link="{
                 name: 'User Profile',
                 path: '/profile',
