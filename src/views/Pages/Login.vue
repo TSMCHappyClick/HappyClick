@@ -87,7 +87,7 @@
         console.log(encryptedPW);
         console.log(b);
 
-        const accountData = { ID: this.model.employeeID, password: this.model.password };
+        const accountData = { ID: this.model.employeeID, password: encryptedPW };
         console.log('data:',(accountData));
 
         
@@ -104,8 +104,8 @@
               console.log("err");
               alert("wrong ID or password!");
             }
-
           });
+
       }
     }
   };
