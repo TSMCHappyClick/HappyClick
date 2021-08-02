@@ -5,90 +5,111 @@
       <!-- Card stats -->
       <b-row>
         <b-col xl="3" md="6">
-          <stats-card title="竹 科 廠 疫 苗 施 打 率"
+          <stats-card title="龍潭廠區疫苗施打率"
                       type="gradient-red"
-                      sub-title="20%"
-                      icon="ni ni-chart-bar-32"
+                      sub-title="3.21%"
+                      icon="fas fa-syringe"
                       class="mb-4">
 
             <template slot="footer">
-              <span class="text-success mr-2">3.48%</span>
-              <span class="text-nowrap">Increase last month</span>
+              <span class="text-success mr-2">1.47%</span>
+              <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
         </b-col>
         <b-col xl="3" md="6">
-          <stats-card title="中 科 廠 疫 苗 施 打 率"
+          <stats-card title="竹科廠區疫苗施打率"
                       type="gradient-orange"
-                      sub-title="20%"
-                      icon="ni ni-chart-bar-32"
+                      sub-title="3.01%"
+                      icon="fas fa-syringe"
                       class="mb-4">
 
             <template slot="footer">
-              <span class="text-success mr-2">12.18%</span>
-              <span class="text-nowrap">Increase last month</span>
+              <span class="text-success mr-2">2.03%</span>
+              <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
         </b-col>
+
         <b-col xl="3" md="6">
-          <stats-card title="南 科 廠 疫 苗 施 打 率"
+          <stats-card title="中科廠區疫苗施打率"
+                      type="gradient-yellow"
+                      sub-title="2.13%"
+                      icon="fas fa-syringe"
+                      class="mb-4">
+
+            <template slot="footer">
+              <span class="text-danger mr-2">1.72%</span>
+              <span class="text-nowrap">Since last month</span>
+            </template>
+          </stats-card>
+        </b-col>
+
+        <b-col xl="3" md="6">
+          <stats-card title="南科廠區疫苗施打率"
                       type="gradient-green"
-                      sub-title="20%"
-                      icon="ni ni-chart-bar-32"
+                      sub-title="2.65%"
+                      icon="fas fa-syringe"
                       class="mb-4">
 
             <template slot="footer">
-              <span class="text-danger mr-2">5.72%</span>
-              <span class="text-nowrap">Increase last month</span>
+              <span class="text-success mr-2">1.48%</span>
+              <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
-
         </b-col>
-        <b-col xl="3" md="6">
-          <stats-card title="海 外 廠 疫 苗 施 打 率"
+
+        <b-col xl="6" md="6">
+          <stats-card title="台灣廠區總疫苗施打率"
                       type="gradient-info"
-                      sub-title="20%"
-                      icon="ni ni-chart-bar-32"
+                      sub-title="2.78%"
+                      icon="fas fa-syringe"
                       class="mb-4">
 
             <template slot="footer">
-              <span class="text-success mr-2">5.18%</span>
-              <span class="text-nowrap">Increase last month</span>
+              <span class="text-success mr-2">1.26%</span>
+              <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
         </b-col>
+
+        <b-col xl="6" md="6">
+          <stats-card title="海外廠區總疫苗施打率"
+                      type="gradient-info"
+                      sub-title="34.76%"
+                      icon="fas fa-syringe"
+                      class="mb-4">
+
+            <template slot="footer">
+              <span class="text-success mr-2">25.06%</span>
+              <span class="text-nowrap">Since last month</span>
+            </template>
+          </stats-card>
+        </b-col>
+
       </b-row>
     </base-header>
 
     <!--Charts-->
     <b-container fluid class="mt--7">
       <b-row>
-        <b-col xl="8" class="mb-5 mb-xl-0">
+        <b-col xl="7" class="mb-5 mb-xl-0">
           <card type="default" header-classes="bg-transparent">
             <b-row align-v="center" slot="header">
               <b-col>
                 <h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6>
-                <h5 class="h3 text-white mb-0">TSMC 總體疫苗施打率(%)</h5>
+                <h5 class="h3 text-white mb-0">TSMC台灣整體疫苗施打率</h5>
               </b-col>
               <b-col>
                 <b-nav class="nav-pills justify-content-end">
-                  <!--
                   <b-nav-item
                        class="mr-2 mr-md-0"
                        :active="bigLineChart.activeIndex === 0"
                        link-classes="py-2 px-3"
                        @click.prevent="initBigChart(0)">
-                      <span class="d-none d-md-block">施打率</span>
+                      <span class="d-none d-md-block">2021</span>
                       <span class="d-md-none">M</span>
                   </b-nav-item>
-                  <b-nav-item
-                    link-classes="py-2 px-3"
-                    :active="bigLineChart.activeIndex === 1"
-                    @click.prevent="initBigChart(1)">   
-                    <span class="d-none d-md-block">未施打人數</span>
-                    <span class="d-md-none">W</span>
-                  </b-nav-item>
-                  -->
                 </b-nav>
               </b-col>
             </b-row>
@@ -102,12 +123,12 @@
           </card>
         </b-col>
 
-        <b-col xl="4" class="mb-5 mb-xl-0">
+        <b-col xl="5" class="mb-5 mb-xl-0">
           <card header-classes="bg-transparent">
             <b-row align-v="center" slot="header">
               <b-col>
-                <h6 class="text-uppercase text-muted ls-1 mb-1">部門施打率(%)</h6>
-                <h5 class="h3 mb-0">Fab營運相關部門</h5>
+                <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
+                <h5 class="h3 mb-0">施打年齡分佈</h5>
               </b-col>
             </b-row>
 
@@ -124,10 +145,10 @@
 
       <!--Tables-->
       <b-row class="mt-5">
-        <b-col xl="8" class="mb-5 mb-xl-0">
+        <b-col xl="7" class="mb-5 mb-xl-0">
           <page-visits-table></page-visits-table>
         </b-col>
-        <b-col xl="4" class="mb-5 mb-xl-0">
+        <b-col xl="5" class="mb-5 mb-xl-0">
           <social-traffic-table></social-traffic-table>
         </b-col>
       </b-row>
@@ -160,15 +181,14 @@
       return {
         bigLineChart: {
           allData: [
-            [0, 6, 10, 18, 27, 32, 45, 50, 53],
-            [22, 23, 205, 28, 31, 35, 37, 40, 41]
+            [0, 2, 15, 27, 32, 46, 57, 68, 74, 81, 93, 99]
           ],
           activeIndex: 0,
           chartData: {
             datasets: [
               {
-                label: 'Performance',
-                data: [0, 50, 10, 30, 15, 40, 20, 60, 60],
+                label: '施打人數',
+                data: [0, 2, 15, 27, 32, 46, 57, 68, 74, 81, 93, 99],
               }
             ],
             labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -177,10 +197,10 @@
         },
         redBarChart: {
           chartData: {
-            labels: ['R&D', '製程', '設備', 'IT', '業務', '營運'],
+            labels: ['<20', '20-29', '30-39', '40-49', '50-59', '60-69'],
             datasets: [{
-              label: 'Sales',
-              data: [25, 20, 30, 22, 17, 29]
+              label: '施打人數',
+              data: [0, 0, 15, 35, 48, 60]
             }]
           },
           extraOptions: chartConfigs.blueChartOptions
@@ -192,11 +212,11 @@
         let chartData = {
           datasets: [
             {
-              label: 'Performance',
+              label: '施打人數',
               data: this.bigLineChart.allData[index]
             }
           ],
-          labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         };
         this.bigLineChart.chartData = chartData;
         this.bigLineChart.activeIndex = index;

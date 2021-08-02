@@ -20,6 +20,11 @@ import App from './App.vue';
 
 // router setup
 import router from './routes/router';
+
+//axios setup
+import axios from 'axios'
+Vue.prototype.$ajax = axios
+
 // plugin setup
 Vue.use(DashboardPlugin);
 

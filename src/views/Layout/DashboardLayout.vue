@@ -39,6 +39,14 @@
         </sidebar-item>
 
         <sidebar-item
+                  :link="{
+                    name: 'HealthCenterOnly',
+                    path: '/health',
+                    icon: 'fas fa-first-aid'
+                  }">
+        </sidebar-item>
+
+        <sidebar-item
               :link="{
                 name: 'User Profile',
                 path: '/profile',
