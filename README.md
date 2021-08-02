@@ -1,4 +1,4 @@
-# [Overview of the page]
+# Overview of the page
 ![screencapture-192-168-1-102-8080-HappyClick-2021-08-02-09_13_43](https://user-images.githubusercontent.com/74636955/127792102-614bbe98-e7ea-4834-9696-b33da4c4e5d7.png)
 
 
