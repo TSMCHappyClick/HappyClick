@@ -83,21 +83,29 @@
         // this will be called only after form is valid. You can do api call here to login
         let encryptedPW = CryptoJS.encrypt(this.model.password)
         let b = CryptoJS.decrypt(encryptedPW)
+
         console.log(encryptedPW);
         console.log(b);
 
         const accountData = { ID: this.model.employeeID, password: this.model.password };
-        console.log('data:',qs.stringify(accountData));
+        console.log('data:',(accountData));
 
         
         axios
           .post("http://localhost:8088/Login", accountData)
           .then(res => {
-            console.log('res:', res.body);
+            console.log("res status", res.status);
+            console.log('res data:', res.data);
+
+            if (res.data== true) {
+              this.$router.push('/dashboard');
+            }
+            else {
+              console.log("err");
+              alert("wrong ID or password!");
+            }
+
           });
-
-
-
       }
     }
   };
