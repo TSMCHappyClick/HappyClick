@@ -65,6 +65,9 @@
 </template>
 <script>
   import CryptoJS from '@/util/CryptoJS.js'
+  import axios from 'axios';
+  import qs from 'qs';
+
   export default {
     data() {
       return {
@@ -78,19 +81,30 @@
     methods: {
       onSubmit() {
         // this will be called only after form is valid. You can do api call here to login
-        let a = CryptoJS.encrypt(this.model.password)
-        let b = CryptoJS.decrypt(a)
-        console.log(a);
+        let encryptedPW = CryptoJS.encrypt(this.model.password)
+        let b = CryptoJS.decrypt(encryptedPW)
+
+        console.log(encryptedPW);
         console.log(b);
 
-        let auth = true;
-        console.log(this.model.employeeID);
-        if (this.model.employeeID != '120878' || this.model.password != '120878')
-          auth = false;
-        if( auth )
-          this.$router.push('/dashboard');
-        else
-          alert('login failed')
+        const accountData = { ID: this.model.employeeID, password: encryptedPW };
+        console.log('data:',(accountData));
+
+        
+        axios
+          .post("http://localhost:8088/Login", accountData)
+          .then(res => {
+            console.log("res status", res.status);
+            console.log('res data:', res.data);
+
+            if (res.data== true) {
+              this.$router.push('/dashboard');
+            }
+            else {
+              console.log("err");
+              alert("wrong ID or password!");
+            }
+          });
 
       }
     }
