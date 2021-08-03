@@ -79,6 +79,7 @@
 <script>
 import { CollapseTransition } from 'vue2-transitions';
 import { BaseNav, Modal } from '@/components';
+import axios from 'axios';
 
 export default {
   components: {
@@ -118,7 +119,16 @@ export default {
       this.activeNotifications = false;
     },
     logout(){
-        this.$router.push('/login');
+      axios.get('http://localhost:8088/logout')
+          .then( (res) => {
+            console.log("res status", res.status);
+            console.log('logout data:', res.data);
+            console.log("!@#");
+
+            // this.$router.push('/login');
+            localStorage.clear();
+          })
+          .catch( (error) => console.log(error));
     }
   }
 };
