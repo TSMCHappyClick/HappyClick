@@ -42,7 +42,7 @@
                   :link="{
                     name: 'HealthCenterOnly',
                     path: '/health',
-                    icon: 'fas fa-first-aid'
+                    icon: 'ni ni-ambulance text-black'
                   }">
         </sidebar-item>
 

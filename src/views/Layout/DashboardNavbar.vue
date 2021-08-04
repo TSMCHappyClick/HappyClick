@@ -125,7 +125,7 @@ export default {
             console.log('logout data:', res.data);
             console.log("!@#");
 
-            // this.$router.push('/login');
+            this.$router.push('/login');
             localStorage.clear();
           })
           .catch( (error) => console.log(error));
