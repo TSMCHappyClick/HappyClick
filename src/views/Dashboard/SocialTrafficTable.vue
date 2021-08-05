@@ -3,7 +3,7 @@
     <template v-slot:header>
       <b-row align-v="center">
         <b-col>
-          <h3 class="mb-0">各廠牌施打比率</h3>
+          <h3 class="mb-0">廠區施打比率</h3>
         </b-col>
         <b-col class="text-right">
           <base-button size="sm" type="primary">See all</base-button>
@@ -16,13 +16,13 @@
       class="table-responsive table"
       :data="tableData"
       header-row-class-name="thead-light">
-      <el-table-column label="疫苗廠牌" min-width="115px" prop="name">
+      <el-table-column label="廠區" min-width="115px" prop="name">
         <template v-slot="{row}">
           <div class="font-weight-600">{{row.name}}</div>
         </template>
       </el-table-column>
 
-      <el-table-column label="施打人數" min-width="110px" prop="people">
+      <el-table-column label="地點" min-width="110px" prop="visitors">
       </el-table-column>
 
       <el-table-column min-width="220px" prop="progress">
@@ -53,33 +53,32 @@
       return {
         tableData: [
           {
-            name: 'Moderna 莫德納',
-            people: '30',
-            progress: 20,
+            name: 'F12',
+            visitors: '新竹',
+            progress: 0.12,
             progressType: 'gradient-danger',
           },
           {
-            name: 'AstraZeneca',
-            people: '480',
-            progress: 55,
+            name: 'F14',
+            visitors: '台南',
+            progress: 0.21,
             progressType: 'gradient-success',
           },
           {
-            name: 'Pfizer-BioNTech',
-            people: '0',
-            progress: 0,
+            name: 'F18',
+            visitors: '台南',
+            progress: 0.16,
             progressType: 'gradient-primary',
           },
           {
-            name: '高端',
-            people: '0',
-            progress: 0,
+            name: 'F15',
+            visitors: '台中',
+            progress: 0.05,
             progressType: 'gradient-info',
-          }
+          },
         ]
       }
     }
-
   }
 </script>
 <style>
