@@ -7,12 +7,12 @@
         <b-col xl="3" md="6">
           <stats-card title="龍潭廠區疫苗施打率"
                       type="gradient-red"
-                      sub-title="3.21%"
+                      sub-title="0.51%"
                       icon="fas fa-syringe"
                       class="mb-4">
 
             <template slot="footer">
-              <span class="text-success mr-2">1.47%</span>
+              <span class="text-success mr-2">0.47%</span>
               <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
@@ -20,12 +20,12 @@
         <b-col xl="3" md="6">
           <stats-card title="竹科廠區疫苗施打率"
                       type="gradient-orange"
-                      sub-title="3.01%"
+                      sub-title="0.68%"
                       icon="fas fa-syringe"
                       class="mb-4">
 
             <template slot="footer">
-              <span class="text-success mr-2">2.03%</span>
+              <span class="text-success mr-2">0.53%</span>
               <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
@@ -34,12 +34,12 @@
         <b-col xl="3" md="6">
           <stats-card title="中科廠區疫苗施打率"
                       type="gradient-yellow"
-                      sub-title="2.13%"
+                      sub-title="0.43%"
                       icon="fas fa-syringe"
                       class="mb-4">
 
             <template slot="footer">
-              <span class="text-danger mr-2">1.72%</span>
+              <span class="text-danger mr-2">0.32%</span>
               <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
@@ -48,12 +48,12 @@
         <b-col xl="3" md="6">
           <stats-card title="南科廠區疫苗施打率"
                       type="gradient-green"
-                      sub-title="2.65%"
+                      sub-title="0.47%"
                       icon="fas fa-syringe"
                       class="mb-4">
 
             <template slot="footer">
-              <span class="text-success mr-2">1.48%</span>
+              <span class="text-success mr-2">0.28%</span>
               <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
@@ -62,12 +62,12 @@
         <b-col xl="6" md="6">
           <stats-card title="台灣廠區總疫苗施打率"
                       type="gradient-info"
-                      sub-title="2.78%"
+                      sub-title="0.48%"
                       icon="fas fa-syringe"
                       class="mb-4">
 
             <template slot="footer">
-              <span class="text-success mr-2">1.26%</span>
+              <span class="text-success mr-2">0.26%</span>
               <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
@@ -128,7 +128,7 @@
             <b-row align-v="center" slot="header">
               <b-col>
                 <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                <h5 class="h3 mb-0">施打年齡分佈</h5>
+                <h5 class="h3 mb-0">部門施打比率</h5>
               </b-col>
             </b-row>
 
@@ -162,15 +162,12 @@
   import * as chartConfigs from '@/components/Charts/config';
   import LineChart from '@/components/Charts/LineChart';
   import BarChart from '@/components/Charts/BarChart';
-
   // Components
   import BaseProgress from '@/components/BaseProgress';
   import StatsCard from '@/components/Cards/StatsCard';
-
   // Tables
   import SocialTrafficTable from './Dashboard/SocialTrafficTable';
   import PageVisitsTable from './Dashboard/PageVisitsTable';
-
   export default {
     components: {
       LineChart,
@@ -184,26 +181,26 @@
       return {
         bigLineChart: {
           allData: [
-            [0, 2, 15, 27, 32, 46, 57, 68, 74, 81, 93, 99]
+            [4, 15, 36, 54, 87, 139, 267, 413]
           ],
           activeIndex: 0,
           chartData: {
             datasets: [
               {
                 label: '施打人數',
-                data: [0, 2, 15, 27, 32, 46, 57, 68, 74, 81, 93, 99],
+                data: [0, 50, 10, 30, 15, 40, 20, 60, 60],
               }
             ],
-            labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
           },
           extraOptions: chartConfigs.blueChartOptions,
         },
         redBarChart: {
           chartData: {
-            labels: ['<20', '20-29', '30-39', '40-49', '50-59', '60-69'],
+            labels: ['R&D', '製程', '設備', 'IT', '業務', '營運'],
             datasets: [{
               label: '施打人數',
-              data: [0, 0, 15, 35, 48, 60]
+              data: [87, 52 , 75, 64, 79, 56]
             }]
           },
           extraOptions: chartConfigs.blueChartOptions
@@ -215,11 +212,11 @@
         let chartData = {
           datasets: [
             {
-              label: '施打人數',
+              label: 'Performance',
               data: this.bigLineChart.allData[index]
             }
           ],
-          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug']
         };
         this.bigLineChart.chartData = chartData;
         this.bigLineChart.activeIndex = index;
