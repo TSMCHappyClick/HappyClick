@@ -4,7 +4,7 @@
     <template v-slot:header>
       <b-row align-v="center">
         <b-col>
-          <h3 class="mb-0">各廠區施打率</h3>
+          <h3 class="mb-0">施打率較低部門</h3>
         </b-col>
         <b-col class="text-right">
           <a href="#!" class="btn btn-sm btn-primary">See all</a>
@@ -15,24 +15,28 @@
     <el-table class="table-responsive table"
               :data="tableData"
               header-row-class-name="thead-light">
-      <el-table-column label="廠區"
+      <el-table-column label="部門"
                        min-width="130px"
-                       prop="factory">
+                       prop="page">
         <template v-slot="{row}">
-          <div class="font-weight-700">{{row.factory}}</div>
+          <div class="font-weight-600">{{row.page}}</div>
         </template>
       </el-table-column>
+      <el-table-column label="總人數"
+                       min-width="70px"
+                       prop="visitors">
+      </el-table-column>
       <el-table-column label="施打人數"
-                       min-width="70px"
-                       prop="people">
-      </el-table-column>
-      <el-table-column label="地點"
-                       min-width="70px"
-                       prop="location">
-      </el-table-column>
-      <el-table-column label="施打率"
                        min-width="90px"
-                       prop="rate">
+                       prop="unique">
+      </el-table-column>
+
+      <el-table-column label="施打比例"
+                       min-width="90px"
+                       prop="bounceRate">
+        <template v-slot="{row}">
+          {{row.bounceRate}}
+        </template>
       </el-table-column>
     </el-table>
   </b-card>
@@ -52,40 +56,35 @@
       return {
         tableData: [
           {
-            factory: 'F2',
-            location: '竹科',
-            people: '30',
-            rate: '0.46%',
+            page: 'Team1',
+            visitors: '569',
+            unique: '13',
+            bounceRate: '2.28%'
           },
           {
-            factory: 'F3',
-            location: '竹科',
-            people: '97',
-            rate: '0.61%'
+            page: 'Team2',
+            visitors: '985',
+            unique: '19',
+            bounceRate: '1.92%'
           },
           {
-            factory: 'F5',
-            location: '竹科',
-            people: '46',
-            rate: '0.32%',
+            page: 'Team3',
+            visitors: '613',
+            unique: '18',
+            bounceRate: '2.93%'
+          },
+          
+          {
+            page: 'Team4',
+            visitors: '2,050',
+            unique: '52',
+            bounceRate: '2.53%'
           },
           {
-            factory: 'F7',
-            location: '竹科',
-            people: '75',
-            rate: '0.56%',
-          },
-          {
-            factory: 'F8',
-            location: '竹科',
-            people: '48',
-            rate: '0.43%',
-          },
-          {
-            factory: 'F12',
-            location: '竹科',
-            people: '62',
-            rate: '0.63%',
+            page: 'Team5',
+            visitors: '795',
+            unique: '11',
+            bounceRate: '1.38%'
           }
         ]
       }
