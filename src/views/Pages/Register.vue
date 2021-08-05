@@ -60,6 +60,7 @@
                               :rules="{required: true, min: 6}"
                               v-model="model.password">
                   </base-input>
+
                   <div class="text-muted font-italic"><small>password strength: <span
                     class="text-success font-weight-700">strong</span></small></div>
                   <b-row class=" my-4">
