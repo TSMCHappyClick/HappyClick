@@ -52,7 +52,7 @@
                             <span>Support</span>
                         </router-link>
                         <div class="dropdown-divider"></div>
-                        <a href="#!" class="dropdown-item">
+                        <a href="" class="dropdown-item" @click = "logout">
                             <i class="ni ni-user-run"></i>
                             <span>Logout</span>
                         </a>
@@ -114,6 +114,18 @@
       },
       showSidebar() {
         this.$sidebar.displaySidebar(true)
+      },
+      logout(){
+        axios.get('http://localhost:8088/logout')
+            .then( (res) => {
+              console.log("res status", res.status);
+              console.log('logout data:', res.data);
+              console.log("!@#");
+
+              this.$router.push('/login');
+              localStorage.clear();
+            })
+            .catch( (error) => console.log(error));
       }
     },
     beforeDestroy() {

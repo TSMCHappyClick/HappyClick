@@ -39,7 +39,7 @@
                     <img alt="Image placeholder" src="img/theme/rabbit.png">
                   </span>
             <b-media-body class="ml-2 d-none d-lg-block">
-              <span class="mb-0 text-sm  font-weight-bold">User</span>
+              <span class="mb-0 text-sm  font-weight-bold">Hi,{{ userID }}</span>
             </b-media-body>
           </b-media>
         </a>
@@ -105,9 +105,17 @@ export default {
       activeNotifications: false,
       showMenu: false,
       searchModalVisible: false,
-      searchQuery: ''
+      searchQuery: '',
+      userID: localStorage.ID
     };
   },
+  // mounted:{
+  //   detect(){
+  //     window.addEventListener('storage', (e) => {
+  //     localStorage.setItem(e.key, e.oldValue)
+  //     })
+  //   }
+  // },
   methods: {
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
