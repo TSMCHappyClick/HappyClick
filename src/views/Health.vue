@@ -31,26 +31,28 @@
 
                 <a href="#" class="card-link">Card link</a>
                 <b-link href="#" class="card-link">Another link</b-link>
-            </b-card>
-        </div>
+                </b-card>
+    </div>
 </template>
 
 <script>
   export default {
     data() {
       return {
-        fields: ['employeeID', 'name', 'vaccine', 'Date'],
+        fields: ['employeeID', 'name', 'vaccine', 'date', 'status'],
         items:[
-            {employeeID: 120332 ,name: 'Anson',vaccine: 'AstraZeneca', Date: '2021-08-08'},
+            {employeeID: 120332 ,name: 'Anson',vaccine: 'AstraZeneca', date: '2021-08-08', status: '已施打'},
         ],
         form: {
           employeeID: '',
           name: '',
           vaccine: null,
           date: null,
+          status: null,
           checked: []
         },
         vaccine: [{ text: 'Select One', value: null }, 'AstraZeneca', 'Moderna', 'BioNTech', '高端'],
+        status: [{text: 'Select One', value: null}, '已施打'],
         show: true
       }
     },
@@ -67,6 +69,7 @@
         this.form.vaccine = null
         this.form.date = null
         this.form.checked = []
+        this.form.status = null
         // Trick to reset/clear native browser form validation state
         this.show = false
         this.$nextTick(() => {
