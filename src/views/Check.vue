@@ -28,6 +28,8 @@
                     </b-card-text>
 
                     <b-card-text>
+                        <b-table striped hover :items="items" :fields="fields"></b-table>
+                        <br>
                         <!--alert and button https://bootstrap-vue.org/docs/components/alert-->
                         <b-alert
                           :show="dismissCountDown"
@@ -36,7 +38,7 @@
                           @dismissed="dismissCountDown=0"
                           @dismiss-count-down="countDownChanged"
                         >
-                          您的預約資料已刪除 {{ dismissCountDown }} 
+                          您的預約資料已刪除，請重新預約! {{ dismissCountDown }} 
                         </b-alert>
                         <b-button @click="showAlert" variant="info" class="m-1" >
                           刪除預約資料
@@ -44,7 +46,7 @@
                     </b-card-text>
 
 
-                    <b-table striped hover :items="items" :fields="fields"></b-table>
+                   
 
                 </b-card>
 
@@ -60,7 +62,7 @@
         items:[
             {employeeID: '120332' ,name: 'Anson',department: 'TSID',vaccine: 'AstraZeneca',
             date:'2021-08-05'},],
-        dismissSecs: 2,
+        dismissSecs: 3,
         dismissCountDown: 0
       }
     },
@@ -69,7 +71,9 @@
         this.dismissCountDown = dismissCountDown
       },
       showAlert() {
+        alert("您的預約將被刪除!");
         this.dismissCountDown = this.dismissSecs
+
       }
     }
 
