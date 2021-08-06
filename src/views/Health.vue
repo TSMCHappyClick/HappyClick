@@ -25,7 +25,13 @@
                 <b-card-text>請勾選施打狀態。</b-card-text>
 
 
-                <b-table striped hover :items="items" :fields="fields"></b-table>
+                <b-table striped hover :items="items" :fields="fields">
+                    <template v-slot:cell(status)="row">
+                        <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
+                            已施打
+                        </b-button>
+                    </template>
+                </b-table>
                 <b-form-checkbox>已施打</b-form-checkbox>
 
 
