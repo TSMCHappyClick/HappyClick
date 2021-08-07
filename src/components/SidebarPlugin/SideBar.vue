@@ -116,7 +116,7 @@
         this.$sidebar.displaySidebar(true)
       },
       logout(){
-        axios.get('http://localhost:8088/logout')
+        axios.get('https://happyclick-healthcenter.herokuapp.com/logout')
             .then( (res) => {
               console.log("res status", res.status);
               console.log('logout data:', res.data);
