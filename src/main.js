@@ -15,6 +15,13 @@ Vue.prototype.$ajax = axios
 // plugin setup
 Vue.use(DashboardPlugin);
 
+
+//prevent localStorage be modified
+window.addEventListener('storage', (e) =>{
+  localStorage.setItem(e.key, e.oldValue)
+})
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
