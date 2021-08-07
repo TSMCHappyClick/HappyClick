@@ -3,7 +3,7 @@
     <template v-slot:header>
       <b-row align-v="center">
         <b-col>
-          <h3 class="mb-0">各廠區施打率(%)</h3>
+          <h3 class="mb-0">廠區施打比率</h3>
         </b-col>
         <b-col class="text-right">
           <base-button size="sm" type="primary">See all</base-button>
@@ -55,25 +55,25 @@
           {
             name: 'F12',
             visitors: '新竹',
-            progress: 60,
+            progress: 0.12,
             progressType: 'gradient-danger',
           },
           {
             name: 'F14',
             visitors: '台南',
-            progress: 70,
+            progress: 0.21,
             progressType: 'gradient-success',
           },
           {
             name: 'F18',
             visitors: '台南',
-            progress: 80,
+            progress: 0.16,
             progressType: 'gradient-primary',
           },
           {
             name: 'F15',
             visitors: '台中',
-            progress: 75,
+            progress: 0.05,
             progressType: 'gradient-info',
           },
         ]
