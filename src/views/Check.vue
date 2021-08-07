@@ -8,10 +8,11 @@
             <!-- Header container -->
             <b-container fluid class="d-flex align-items-center">
             <b-row >
-                <b-col lg="7" md="10">
+                <b-col lg="15" md="12">
                 <h1 class="display-3 text-white">Reservation Information</h1>
-                <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your
-                    work and manage your projects or assigned tasks</p>
+                <p class="text-white mt-0 mb-5">Please check your vaccine Reservation information.
+                  <br>If you want to modify the information,
+                  please delete the current revervation and make a reservation again.</p>
                 
                 </b-col>
             </b-row>
@@ -20,60 +21,35 @@
         </div>
             
             <b-card-group deck>
-                <b-card class="mt-3" header="Your registration information" header-bg-variant="default" header-text-variant="white">
+                <b-card class="mt-3" header="疫苗預約資訊" header-bg-variant="default" header-text-variant="white">
                     <b-card-text>
-                    Some quick example text to build on the <em>card title</em> and make up the bulk of the card's
-                    content.
+                      提醒您，請確認您的預約接種時間是否正確，若需修改請先按下方"刪除預約資料"再至
+                      <b-link href="/reserve#/reserve">Reservation頁面</b-link>新增一筆預約
                     </b-card-text>
 
-                    <b-card-text>A second paragraph of text in the card.</b-card-text>
-
-
-                    <b-table striped hover :items="items" :fields="fields"></b-table>
-
-
-
-                    <a href="#" class="card-link">Card link</a>
-                    <b-link href="#" class="card-link">Another link</b-link>
-                </b-card>
-
-                <b-card class="mt-3" header="Edit registration information" header-bg-variant="teal" header-text-variant="white">
-                    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-                        <b-form-group
-                        id="input-group-1"
-                        label="Employee ID:"
-                        label-for="input-1"
-                        description="We'll never share your information with anyone else."
+                    <b-card-text>
+                        <b-table striped hover :items="items" :fields="fields"></b-table>
+                        <br>
+                        <!--alert and button https://bootstrap-vue.org/docs/components/alert-->
+                        <b-alert
+                          :show="dismissCountDown"
+                          dismissible
+                          variant="warning"
+                          @dismissed="dismissCountDown=0"
+                          @dismiss-count-down="countDownChanged"
                         >
-                        <b-form-input
-                            id="input-1"
-                            v-model="form.employeeID"
-                            type="ID"
-                            placeholder="Enter employee ID"
-                            required
-                        ></b-form-input>
-                        </b-form-group>
+                          您的預約資料已刪除，請重新預約! {{ dismissCountDown }} 
+                        </b-alert>
+                        <b-button @click="showAlert" variant="info" class="m-1" >
+                          刪除預約資料
+                        </b-button>
+                    </b-card-text>
 
 
+                   
 
-                        <b-form-group id="input-group-3" label="Vaccine Type:" label-for="input-3">
-                        <b-form-select
-                            id="input-3"
-                            v-model="form.vaccine"
-                            :options="vaccine"
-                            required
-                        ></b-form-select>
-                        </b-form-group>
-
-
-
-                        <b-button type="submit" variant="primary">Submit</b-button>
-                        <b-button type="reset" variant="danger">Reset</b-button>
-                    </b-form>
-                    <b-card class="mt-3" header="Form Data Result">
-                        <pre class="m-0">{{ form }}</pre>
-                    </b-card>
                 </b-card>
+
             </b-card-group>
     </div>
 </template>
@@ -82,37 +58,21 @@
   export default {
     data() {
       return {
-        fields: ['employeeID', 'name', 'vaccine'],
+        fields: ['employeeID', 'name', 'department','vaccine','date'],
         items:[
-            {employeeID: 120332 ,name: 'Anson',vaccine: 'AstraZeneca'},
-        ],
-        form: {
-          employeeID: '',
-          name: '',
-          vaccine: null,
-          checked: []
-        },
-        vaccine: [{ text: 'Select One', value: null }, 'AstraZeneca', 'Moderna', 'BioNTech', '高端'],
-        show: true
+            {employeeID: '120332' ,name: 'Anson',department: 'TSID',vaccine: 'AstraZeneca',
+            date:'2021-08-05'},],
+        dismissSecs: 3,
+        dismissCountDown: 0
       }
     },
     methods: {
-      onSubmit(event) {
-        event.preventDefault()
-        alert(JSON.stringify(this.form))
+      countDownChanged(dismissCountDown) {
+        this.dismissCountDown = dismissCountDown
       },
-      onReset(event) {
-        event.preventDefault()
-        // Reset our form values
-        this.form.employeeID = ''
-        this.form.name = ''
-        this.form.vaccine = null
-        this.form.checked = []
-        // Trick to reset/clear native browser form validation state
-        this.show = false
-        this.$nextTick(() => {
-          this.show = true
-        })
+      showAlert() {
+        alert("您的預約將被刪除!");
+        this.dismissCountDown = this.dismissSecs
       }
     }
   }

@@ -66,7 +66,6 @@
 <script>
   import CryptoJS from '@/util/CryptoJS.js'
   import axios from 'axios';
-  import qs from 'qs';
 
   export default {
     data() {
@@ -96,9 +95,13 @@
           .then(res => {
             console.log("res status", res.status);
             console.log('res data:', res.data);
+            // localStorage.setItem('name', 'storingSomething');
+            // console.log("LOCAL:",localStorage);
 
             if (res.data== true) {
               this.$router.push('/dashboard');
+              localStorage.setItem("ID", this.model.employeeID);
+              localStorage.status = "logged in"
             }
             else {
               console.log("err");

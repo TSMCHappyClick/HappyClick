@@ -12,7 +12,7 @@ const routes = [
       {
         path: '/login',
         name: 'login',
-        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Login.vue')
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Pages/Login.vue')        
       },
       {
         path: '/register',
@@ -62,7 +62,16 @@ const routes = [
       {
         path: '/health',
         name: 'health',
-        component: () => import(/* webpackChunkName: "demo" */ '../views/Health.vue')
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Health.vue'),
+        meta: {
+          permissions: [
+            {
+              role: "guest",
+              access: false,
+              redirect: "login"
+            }
+          ]
+        }
       },
     ]
   },

@@ -57,34 +57,34 @@
         tableData: [
           {
             page: 'Team1',
-            visitors: '4,569',
-            unique: '340',
-            bounceRate: '46,53%'
+            visitors: '569',
+            unique: '13',
+            bounceRate: '2.28%'
           },
           {
             page: 'Team2',
-            visitors: '3,985',
-            unique: '319',
-            bounceRate: '46,53%'
+            visitors: '985',
+            unique: '19',
+            bounceRate: '1.92%'
           },
           {
             page: 'Team3',
-            visitors: '3,513',
-            unique: '294',
-            bounceRate: '36,49%'
+            visitors: '613',
+            unique: '18',
+            bounceRate: '2.93%'
           },
           
           {
             page: 'Team4',
             visitors: '2,050',
-            unique: '147',
-            bounceRate: '50,87%'
+            unique: '52',
+            bounceRate: '2.53%'
           },
           {
             page: 'Team5',
-            visitors: '1,795',
-            unique: '190',
-            bounceRate: '46,53%'
+            visitors: '795',
+            unique: '11',
+            bounceRate: '1.38%'
           }
         ]
       }
