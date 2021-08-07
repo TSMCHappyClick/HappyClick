@@ -91,16 +91,17 @@
 
         
         axios
-          .post("https://happyclick-healthcenter.herokuapp.com/Login", accountData)
+          .post("https://happyclick-healthcenter.herokuapp.com/login", accountData)
           .then(res => {
             console.log("res status", res.status);
             console.log('res data:', res.data);
             // localStorage.setItem('name', 'storingSomething');
             // console.log("LOCAL:",localStorage);
 
-            if (res.data.identity == 'wrong id or password!') {
+            if (res.data.identity == 'Wrong id or password!') {
               console.log("login err");
               alert("wrong ID or password!");
+              this.$router.push('/login');
             }
             else {
               this.$router.push('/dashboard');
