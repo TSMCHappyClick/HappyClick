@@ -39,6 +39,7 @@
         </sidebar-item>
 
         <sidebar-item
+                  v-if = 'identity == "med"'
                   :link="{
                     name: 'HealthCenterOnly',
                     path: '/health',
@@ -55,6 +56,7 @@
         </sidebar-item>
 
         <sidebar-item
+                v-if = 'identity != "med"'
                 :link="{
                   name: 'Tables',
                   path: '/tables',
@@ -103,6 +105,11 @@
   import { FadeTransition } from 'vue2-transitions';
 
   export default {
+    data() {
+      return {
+        identity: localStorage.identity
+      };
+    },
     components: {
       DashboardNavbar,
       ContentFooter,
