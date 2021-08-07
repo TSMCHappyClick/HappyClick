@@ -34,6 +34,7 @@
     "vue-clipboard2": "^0.3.0",
     "vue-flatpickr-component": "^8.1.2",
     "vue-router": "^3.0.6",
+    "vue-router-user-roles": "^0.1.92",
     "vue2-transitions": "^0.2.3"
   },
   "devDependencies": {

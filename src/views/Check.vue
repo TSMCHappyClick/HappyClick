@@ -89,8 +89,7 @@
         form: {
           employeeID: '',
           name: '',
-          vaccine: null,
-          checked: []
+          vaccine: null
         },
         vaccine: [{ text: 'Select One', value: null }, 'AstraZeneca', 'Moderna', 'BioNTech', '高端'],
         show: true
@@ -107,7 +106,6 @@
         this.form.employeeID = ''
         this.form.name = ''
         this.form.vaccine = null
-        this.form.checked = []
         // Trick to reset/clear native browser form validation state
         this.show = false
         this.$nextTick(() => {
