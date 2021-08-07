@@ -86,28 +86,31 @@
         console.log(encryptedPW);
         console.log(b);
 
-        const accountData = { ID: this.model.employeeID, password: encryptedPW };
+        const accountData = { ID: this.model.employeeID, password: this.model.password };
         console.log('data:',(accountData));
 
         
         axios
-          .post("http://localhost:8088/Login", accountData)
+          .post("https://happyclick-healthcenter.herokuapp.com/login", accountData)
           .then(res => {
             console.log("res status", res.status);
             console.log('res data:', res.data);
             // localStorage.setItem('name', 'storingSomething');
             // console.log("LOCAL:",localStorage);
 
-            if (res.data== true) {
-              this.$router.push('/dashboard');
-              localStorage.setItem("ID", this.model.employeeID);
-              localStorage.status = "logged in"
+            if (res.data.identity == 'Wrong id or password!') {
+              console.log("login err");
+              alert("wrong ID or password!");
+              this.$router.push('/login');
             }
             else {
-              console.log("err");
-              alert("wrong ID or password!");
+              this.$router.push('/dashboard');
+              localStorage.setItem("ID", this.model.employeeID);
+              localStorage.identity = res.data.identity;
+              localStorage.status = "logged in";
             }
-          });
+          })
+          .catch( (error) => console.log(error));
 
       }
     }
