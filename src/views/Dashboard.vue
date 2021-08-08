@@ -10,11 +10,6 @@
                       sub-title="0.51%"
                       icon="fas fa-syringe"
                       class="mb-4">
-
-            <template slot="footer">
-              <span class="text-success mr-2">0.47%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
           </stats-card>
         </b-col>
         <b-col xl="3" md="6">
@@ -23,11 +18,6 @@
                       sub-title="0.68%"
                       icon="fas fa-syringe"
                       class="mb-4">
-
-            <template slot="footer">
-              <span class="text-success mr-2">0.53%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
           </stats-card>
         </b-col>
 
@@ -37,11 +27,6 @@
                       sub-title="0.43%"
                       icon="fas fa-syringe"
                       class="mb-4">
-
-            <template slot="footer">
-              <span class="text-danger mr-2">0.32%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
           </stats-card>
         </b-col>
 
@@ -51,39 +36,33 @@
                       sub-title="0.47%"
                       icon="fas fa-syringe"
                       class="mb-4">
-
-            <template slot="footer">
-              <span class="text-success mr-2">0.28%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
           </stats-card>
         </b-col>
 
-        <b-col xl="6" md="6">
-          <stats-card title="台灣廠區總疫苗施打率"
+        <b-col xl="4" md="6">
+          <stats-card title="中國廠區疫苗施打率"
                       type="gradient-info"
                       sub-title="0.48%"
                       icon="fas fa-syringe"
                       class="mb-4">
-
-            <template slot="footer">
-              <span class="text-success mr-2">0.26%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
           </stats-card>
         </b-col>
 
-        <b-col xl="6" md="6">
-          <stats-card title="海外廠區總疫苗施打率"
-                      type="gradient-info"
+        <b-col xl="4" md="6">
+          <stats-card title="美國廠區疫苗施打率"
+                      type="gradient-purple"
                       sub-title="12.76%"
                       icon="fas fa-syringe"
                       class="mb-4">
+          </stats-card>
+        </b-col>
 
-            <template slot="footer">
-              <span class="text-success mr-2">9.06%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
+        <b-col xl="4" md="6">
+          <stats-card title="新加坡廠區疫苗施打率"
+                      type="gradient-default"
+                      sub-title="0.51%"
+                      icon="fas fa-syringe"
+                      class="mb-4">
           </stats-card>
         </b-col>
 
