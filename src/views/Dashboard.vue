@@ -9,11 +9,11 @@
                       type="gradient-red"
                       sub-title="20%"
                       icon="ni ni-chart-bar-32"
-                      class="mb-4">
-
+                      class="mb-4"
+                      >
             <template slot="footer">
-              <span class="text-success mr-2">3.48%</span>
-              <span class="text-nowrap">Increase last month</span>
+                 <span class="text-success mr-2">3.48%</span>
+                 <span class="text-nowrap">Increase last month</span>
             </template>
           </stats-card>
         </b-col>
@@ -59,7 +59,7 @@
         </b-col>
       </b-row>
     </base-header>
-
+    
     <!--Charts-->
     <b-container fluid class="mt--7">
       <b-row>
@@ -72,7 +72,7 @@
               </b-col>
               <b-col>
                 <b-nav class="nav-pills justify-content-end">
-                  <!--
+                  
                   <b-nav-item
                        class="mr-2 mr-md-0"
                        :active="bigLineChart.activeIndex === 0"
@@ -88,7 +88,7 @@
                     <span class="d-none d-md-block">未施打人數</span>
                     <span class="d-md-none">W</span>
                   </b-nav-item>
-                  -->
+                  
                 </b-nav>
               </b-col>
             </b-row>
@@ -132,16 +132,21 @@
         </b-col>
       </b-row>
       <!--End tables-->
+      <b-row class="mt-5">
+        <!--<Shot-Person-table></Shot-Person-table>-->
+      </b-row>  
     </b-container>
 
   </div>
+  
 </template>
 <script>
+
   // Charts
   import * as chartConfigs from '@/components/Charts/config';
   import LineChart from '@/components/Charts/LineChart';
   import BarChart from '@/components/Charts/BarChart';
-
+  
   // Components
   import BaseProgress from '@/components/BaseProgress';
   import StatsCard from '@/components/Cards/StatsCard';
@@ -149,7 +154,8 @@
   // Tables
   import SocialTrafficTable from './Dashboard/SocialTrafficTable';
   import PageVisitsTable from './Dashboard/PageVisitsTable';
-
+  import ShotPersonTable from './Dashboard/ShotPersonTable';
+ 
   export default {
     components: {
       LineChart,
@@ -157,7 +163,8 @@
       BaseProgress,
       StatsCard,
       PageVisitsTable,
-      SocialTrafficTable
+      SocialTrafficTable,
+      ShotPersonTable,
     },
     data() {
       return {
@@ -204,12 +211,14 @@
         };
         this.bigLineChart.chartData = chartData;
         this.bigLineChart.activeIndex = index;
-      }
+      },
     },
     mounted() {
       this.initBigChart(0);
-    }
-  };
+    },
+  }
+
+
 </script>
 <style>
 .el-table .cell{

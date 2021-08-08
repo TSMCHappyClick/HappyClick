@@ -3,7 +3,7 @@
     <template v-slot:header>
       <b-row align-v="center">
         <b-col>
-          <h3 class="mb-0">各廠牌疫苗施打率(%)</h3>
+          <h3 class="mb-0">各廠區施打率(%)</h3>
         </b-col>
         <b-col class="text-right">
           <base-button size="sm" type="primary">See all</base-button>
@@ -22,7 +22,8 @@
         </template>
       </el-table-column>
 
-
+      <el-table-column label="地點" min-width="110px" prop="visitors">
+      </el-table-column>
 
       <el-table-column min-width="220px" prop="progress">
         <template v-slot="{row}">
@@ -39,7 +40,7 @@
   import { BaseProgress } from '@/components';
   import { Table, TableColumn, DropdownMenu, DropdownItem, Dropdown} from 'element-ui'
   export default {
-    name: 'social-traffic-table',
+    name: 'Shot-Person-table',
     components: {
       BaseProgress,
       [Table.name]: Table,
@@ -52,27 +53,27 @@
       return {
         tableData: [
           {
-            name: 'AstraZeneca',
-
+            name: 'F12',
+            visitors: '新竹',
             progress: 60,
             progressType: 'gradient-danger',
           },
           {
-            name: 'Moderna',
-
-            progress: 30,
+            name: 'F14',
+            visitors: '台南',
+            progress: 70,
             progressType: 'gradient-success',
           },
           {
-            name: 'BioNTech',
-
-            progress: 8,
+            name: 'F18',
+            visitors: '台南',
+            progress: 80,
             progressType: 'gradient-primary',
           },
           {
-            name: '高端',
-
-            progress: 2,
+            name: 'F15',
+            visitors: '台中',
+            progress: 75,
             progressType: 'gradient-info',
           },
 
