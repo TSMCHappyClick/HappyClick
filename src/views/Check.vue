@@ -58,7 +58,7 @@
       return {
         fields: ['employeeID', 'vaccine_type','date'],
         items:[
-            {employeeID: localStorage.ID ,vaccine_type: 'QQ', date:''}],
+            {employeeID: localStorage.ID ,vaccine_type: 'None', date:'None'}],
         dismissSecs: 3,
         dismissCountDown: 0
       }
@@ -83,7 +83,9 @@
         }
       },
       handleDelete() {
-        const reservedData = {"ID": localStorage.ID, "date": this.items[0].date, "vaccine_type": this.items[0].vaccine_type};
+        const reservedData = {"ID": localStorage.ID, "date": this.items[0].date, 
+                              "vaccine_type": this.items[0].vaccine_type};
+        console.log(reservedData);
         axios
           .post('https://happyclick-healthcenter.herokuapp.com/removeReserve', reservedData)
           .then(res => {
