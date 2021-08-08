@@ -40,28 +40,25 @@
     data() {
       return {
         identity: localStorage.identity,
-        tableData: [
-          {
-            id: 'test',
-            status: 'OK'
-          }]
+        tableData: []
       }
     },
     created() {
         var __this = this;
         axios
-          .get('https://happyclick-healthcenter.herokuapp.com/find_employees_under_staff',{params:{"id":localStorage.ID}})
+          .get('https://happyclick-healthcenter.herokuapp.com/find_employees_under_staff',{params:{"id":localStorage.id}})
           .then(res => {
             console.log(res.data);
-            res.data.shot.forEach(function(item, index, array) {
+            res.data.shot.forEach(function(item) {
+              console.log(item);
               __this.tableData.push({
-                  'id': item.id,
+                  'id': item,
                   'status': '已施打'
               });
             })
-            res.data.not_shot.forEach(function(item, index, array) {
+            res.data.not_shot.forEach(function(item) {
               __this.tableData.push({
-                  'id': item.id,
+                  'id': item,
                   'status': '未施打'
               });
             });

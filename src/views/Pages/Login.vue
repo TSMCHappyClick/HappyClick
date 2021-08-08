@@ -96,12 +96,16 @@
               this.$router.push('/login');
             }
             else {
-              this.$router.push('/dashboard');
+              if (res.data.identity){
+                localStorage.identity = res.data.identity;
+              }
+              else{
+                localStorage.identity = 'staff'
+              }
               localStorage.setItem("id", this.model.employeeID);
-              localStorage.identity = res.data.identity;
               localStorage.username = res.data.username;
               localStorage.status = "logged in";
-
+              this.$router.push('/dashboard');
             }
           })
           .catch( (error) => console.log(error));
