@@ -166,12 +166,12 @@
             console.log(res.data['竹科'])
             __this.regionData.rate_1 = res.data['龍潭封測廠'];
             console.log("!!!!!:",__this.regionData.rate_1)
-            __this.regionData.rate_2 = res.data['竹科'];
-            __this.regionData.rate_3 = res.data['中科'];
-            __this.regionData.rate_4 = res.data['南科'];
-            __this.regionData.rate_5 = res.data['中國'];
-            __this.regionData.rate_ˊ = res.data['美國'];
-            __this.regionData.rate_7 = res.data['新加坡'];
+            __this.regionData.rate_2 = Math.round(res.data['竹科']*10000)/100;
+            __this.regionData.rate_3 = Math.round(res.data['中科']*10000)/100;
+            __this.regionData.rate_4 = Math.round(res.data['南科']*10000)/100;
+            __this.regionData.rate_5 = Math.round(res.data['中國']*10000)/100;
+            __this.regionData.rate_ˊ = Math.round(res.data['美國']*10000)/100;
+            __this.regionData.rate_7 = Math.round(res.data['新加坡']*10000)/100;
           })
           .catch( (error) => console.log(error));
       //get data for barChart 
