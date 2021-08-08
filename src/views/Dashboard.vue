@@ -76,12 +76,12 @@
         <b-col xl="6" md="6">
           <stats-card title="海外廠區總疫苗施打率"
                       type="gradient-info"
-                      sub-title="34.76%"
+                      sub-title="12.76%"
                       icon="fas fa-syringe"
                       class="mb-4">
 
             <template slot="footer">
-              <span class="text-success mr-2">25.06%</span>
+              <span class="text-success mr-2">9.06%</span>
               <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
@@ -93,42 +93,11 @@
     <!--Charts-->
     <b-container fluid class="mt--7">
       <b-row>
-        <b-col xl="7" class="mb-5 mb-xl-0">
-          <card type="default" header-classes="bg-transparent">
-            <b-row align-v="center" slot="header">
-              <b-col>
-                <h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6>
-                <h5 class="h3 text-white mb-0">TSMC台灣整體疫苗施打率</h5>
-              </b-col>
-              <b-col>
-                <b-nav class="nav-pills justify-content-end">
-                  <b-nav-item
-                       class="mr-2 mr-md-0"
-                       :active="bigLineChart.activeIndex === 0"
-                       link-classes="py-2 px-3"
-                       @click.prevent="initBigChart(0)">
-                      <span class="d-none d-md-block">2021</span>
-                      <span class="d-md-none">M</span>
-                  </b-nav-item>
-                </b-nav>
-              </b-col>
-            </b-row>
-            <line-chart
-              :height="350"
-              ref="bigChart"
-              :chart-data="bigLineChart.chartData"
-              :extra-options="bigLineChart.extraOptions"
-            >
-            </line-chart>
-          </card>
-        </b-col>
-
-        <b-col xl="5" class="mb-5 mb-xl-0">
+        <b-col xl="12" class="mb-5 mb-xl-0">
           <card header-classes="bg-transparent">
             <b-row align-v="center" slot="header">
               <b-col>
-                <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                <h5 class="h3 mb-0">部門施打比率</h5>
+                <h5 class="h3 mb-0">各廠區施打率(%)</h5>
               </b-col>
             </b-row>
 
@@ -145,11 +114,11 @@
 
       <!--Tables-->
       <b-row class="mt-5">
-        <b-col xl="7" class="mb-5 mb-xl-0">
-          <page-visits-table></page-visits-table>
-        </b-col>
-        <b-col xl="5" class="mb-5 mb-xl-0">
+        <b-col xl="6" class="mb-5 mb-xl-0">
           <social-traffic-table></social-traffic-table>
+        </b-col>
+        <b-col xl="6" class="mb-5 mb-xl-0">
+          <employee-table></employee-table>
         </b-col>
       </b-row>
       <!--End tables-->
@@ -167,6 +136,7 @@
   import StatsCard from '@/components/Cards/StatsCard';
   // Tables
   import SocialTrafficTable from './Dashboard/SocialTrafficTable';
+  import EmployeeTable from './Dashboard/EmployeeTable';
   import PageVisitsTable from './Dashboard/PageVisitsTable';
   export default {
     components: {
@@ -175,7 +145,8 @@
       BaseProgress,
       StatsCard,
       PageVisitsTable,
-      SocialTrafficTable
+      SocialTrafficTable,
+      EmployeeTable
     },
     data() {
       return {
@@ -197,10 +168,10 @@
         },
         redBarChart: {
           chartData: {
-            labels: ['R&D', '製程', '設備', 'IT', '業務', '營運'],
+            labels: ['F2', 'F3', 'F5', 'F6', 'F7', 'F8', 'F10', 'F11', 'F12A', 'F12B', 'F14', 'F15', 'F16', 'F18'],
             datasets: [{
-              label: '施打人數',
-              data: [87, 52 , 75, 64, 79, 56]
+              label: '施打疫苗比率(%)',
+              data: [0.71, 0.52 , 0.35, 0.24, 0.69, 0.6, 9.1, 12.4, 0.36, 0.46, 2.3, 1.2, 8.7, 0.31]
             }]
           },
           extraOptions: chartConfigs.blueChartOptions
