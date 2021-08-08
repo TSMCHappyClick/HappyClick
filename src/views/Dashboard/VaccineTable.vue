@@ -39,7 +39,7 @@
   import { BaseProgress } from '@/components';
   import { Table, TableColumn, DropdownMenu, DropdownItem, Dropdown} from 'element-ui'
   export default {
-    name: 'social-traffic-table',
+    name: 'vaccine-table',
     components: {
       BaseProgress,
       [Table.name]: Table,
@@ -73,6 +73,15 @@
           },
         ]
       }
+    },
+    created() {
+      var __this = this;
+        axios
+          .get('https://happyclick-healthcenter.herokuapp.com/find_vaccine_shot_rate')
+          .then(res => {
+            console.log(res.data);
+            
+          });
     }
   }
 </script>

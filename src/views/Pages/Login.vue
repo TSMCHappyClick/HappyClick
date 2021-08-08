@@ -79,24 +79,16 @@
     },
     methods: {
       onSubmit() {
-        // this will be called only after form is valid. You can do api call here to login
         let encryptedPW = CryptoJS.encrypt(this.model.password)
-        let b = CryptoJS.decrypt(encryptedPW)
-
         console.log(encryptedPW);
-        console.log(b);
 
-        const accountData = { ID: this.model.employeeID, password: this.model.password };
-        console.log('data:',(accountData));
+        const accountData = { id: this.model.employeeID, password: this.model.password };
 
-        
         axios
           .post("https://happyclick-healthcenter.herokuapp.com/login", accountData)
           .then(res => {
             console.log("res status", res.status);
             console.log('res data:', res.data);
-            // localStorage.setItem('name', 'storingSomething');
-            // console.log("LOCAL:",localStorage);
 
             if (res.data.identity == 'Wrong id or password!') {
               console.log("login err");
@@ -105,9 +97,11 @@
             }
             else {
               this.$router.push('/dashboard');
-              localStorage.setItem("ID", this.model.employeeID);
+              localStorage.setItem("id", this.model.employeeID);
               localStorage.identity = res.data.identity;
+              localStorage.username = res.data.username;
               localStorage.status = "logged in";
+
             }
           })
           .catch( (error) => console.log(error));

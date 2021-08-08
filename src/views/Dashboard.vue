@@ -10,11 +10,6 @@
                       sub-title="0.51%"
                       icon="fas fa-syringe"
                       class="mb-4">
-
-            <template slot="footer">
-              <span class="text-success mr-2">0.47%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
           </stats-card>
         </b-col>
         <b-col xl="3" md="6">
@@ -23,11 +18,6 @@
                       sub-title="0.68%"
                       icon="fas fa-syringe"
                       class="mb-4">
-
-            <template slot="footer">
-              <span class="text-success mr-2">0.53%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
           </stats-card>
         </b-col>
 
@@ -37,11 +27,6 @@
                       sub-title="0.43%"
                       icon="fas fa-syringe"
                       class="mb-4">
-
-            <template slot="footer">
-              <span class="text-danger mr-2">0.32%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
           </stats-card>
         </b-col>
 
@@ -51,39 +36,33 @@
                       sub-title="0.47%"
                       icon="fas fa-syringe"
                       class="mb-4">
-
-            <template slot="footer">
-              <span class="text-success mr-2">0.28%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
           </stats-card>
         </b-col>
 
-        <b-col xl="6" md="6">
-          <stats-card title="台灣廠區總疫苗施打率"
+        <b-col xl="4" md="6">
+          <stats-card title="中國廠區疫苗施打率"
                       type="gradient-info"
                       sub-title="0.48%"
                       icon="fas fa-syringe"
                       class="mb-4">
-
-            <template slot="footer">
-              <span class="text-success mr-2">0.26%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
           </stats-card>
         </b-col>
 
-        <b-col xl="6" md="6">
-          <stats-card title="海外廠區總疫苗施打率"
-                      type="gradient-info"
+        <b-col xl="4" md="6">
+          <stats-card title="美國廠區疫苗施打率"
+                      type="gradient-purple"
                       sub-title="12.76%"
                       icon="fas fa-syringe"
                       class="mb-4">
+          </stats-card>
+        </b-col>
 
-            <template slot="footer">
-              <span class="text-success mr-2">9.06%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
+        <b-col xl="4" md="6">
+          <stats-card title="新加坡廠區疫苗施打率"
+                      type="gradient-default"
+                      sub-title="0.51%"
+                      icon="fas fa-syringe"
+                      class="mb-4">
           </stats-card>
         </b-col>
 
@@ -115,10 +94,10 @@
       <!--Tables-->
       <b-row class="mt-5">
         <b-col xl="6" class="mb-5 mb-xl-0">
-          <social-traffic-table></social-traffic-table>
+          <vaccine-table></vaccine-table>
         </b-col>
         <b-col xl="6" class="mb-5 mb-xl-0">
-          <employee-table></employee-table>
+          <employee-table v-if = 'identity == "med"'></employee-table>
         </b-col>
       </b-row>
       <!--End tables-->
@@ -127,45 +106,26 @@
   </div>
 </template>
 <script>
+  import axios from 'axios'
   // Charts
   import * as chartConfigs from '@/components/Charts/config';
-  import LineChart from '@/components/Charts/LineChart';
   import BarChart from '@/components/Charts/BarChart';
   // Components
   import BaseProgress from '@/components/BaseProgress';
   import StatsCard from '@/components/Cards/StatsCard';
   // Tables
-  import SocialTrafficTable from './Dashboard/SocialTrafficTable';
   import EmployeeTable from './Dashboard/EmployeeTable';
-  import PageVisitsTable from './Dashboard/PageVisitsTable';
+  import VaccineTable from './Dashboard/VaccineTable';
   export default {
     components: {
-      LineChart,
       BarChart,
       BaseProgress,
       StatsCard,
-      PageVisitsTable,
-      SocialTrafficTable,
-      EmployeeTable
+      EmployeeTable,
+      VaccineTable
     },
     data() {
       return {
-        bigLineChart: {
-          allData: [
-            [4, 15, 36, 54, 87, 139, 267, 413]
-          ],
-          activeIndex: 0,
-          chartData: {
-            datasets: [
-              {
-                label: '施打人數',
-                data: [0, 50, 10, 30, 15, 40, 20, 60, 60],
-              }
-            ],
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-          },
-          extraOptions: chartConfigs.blueChartOptions,
-        },
         redBarChart: {
           chartData: {
             labels: ['F2', 'F3', 'F5', 'F6', 'F7', 'F8', 'F10', 'F11', 'F12A', 'F12B', 'F14', 'F15', 'F16', 'F18'],
@@ -179,22 +139,29 @@
       };
     },
     methods: {
-      initBigChart(index) {
-        let chartData = {
-          datasets: [
-            {
-              label: 'Performance',
-              data: this.bigLineChart.allData[index]
-            }
-          ],
-          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug']
-        };
-        this.bigLineChart.chartData = chartData;
-        this.bigLineChart.activeIndex = index;
-      }
     },
     mounted() {
-      this.initBigChart(0);
+      var __this = this;
+      //get data for division shot
+      axios
+          .get('https://happyclick-healthcenter.herokuapp.com/find_division_shot_rate')
+          .then(res => {
+            console.log(res.data);
+            console.log(res.data[0]);
+            // {'竹科': xx, '中科': xx, '南科': xx, '中國': xx, '美國': xx, '新加坡': xx, '龍潭封測廠': xx}
+          })
+          .catch( (error) => console.log(error));
+      //get data for barChart 
+      axios
+          .get('https://happyclick-healthcenter.herokuapp.com/find_fac_shot_rate')
+          .then(res => {
+            console.log(res.data);
+            console.log(res.data[0]);
+            __this
+            // {'factorys':['F12A', 'F12B', 'F2', 'F3', 'F5', 'F6', 'F8', 'F15A', 'F15B', 'F14A', 'F14B', 'F18', 'F16', 'F10', 'F11', 'SSMC', 'AP1', 'AP2', 'AP3', 'AP5'],
+            // 'rate':[0.6666666666666666, 0.2, 0.625, 0.3333333333333333, 0.6, 1.0, 0.0, 0.25, 0.25, 0.625, 0.2857142857142857, 0.8, 0.625, 0.5, 0.25, 0.42857142857142855, 0.25, 0.16666666666666666, 0.0, 0.3333333333333333]}
+          })
+          .catch( (error) => console.log(error));
     }
   };
 </script>
