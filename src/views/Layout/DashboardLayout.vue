@@ -38,7 +38,7 @@
                   }">
         </sidebar-item>
 
-       
+
       </template>
 
     </side-bar>
