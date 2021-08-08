@@ -71,7 +71,7 @@
                             id="input-1"
                             v-model="form.amount"
                             type="ID"
-                            placeholder="Enter availible and not expired doses of vaccine"
+                            placeholder="Enter availible doses of vaccine"
                             required
                         ></b-form-input>
                         </b-form-group>
