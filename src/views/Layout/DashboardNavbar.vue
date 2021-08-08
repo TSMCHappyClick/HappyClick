@@ -15,19 +15,6 @@
       </li>
     </b-navbar-nav>
     <b-navbar-nav class="align-items-center ml-auto ml-md-0">
-        <b-form class="navbar-search form-inline mr-sm-3"
-            :class="{'navbar-search-dark': type === 'default', 'navbar-search-light': type === 'light'}"
-            id="navbar-search-main">
-        <b-form-group class="mb-0">
-          <b-input-group class="input-group-alternative input-group-merge">
-            <b-form-input placeholder="Search" type="text"> </b-form-input>
-
-            <div class="input-group-append">
-              <span class="input-group-text"><i class="fas fa-search"></i></span>
-            </div>
-          </b-input-group>
-        </b-form-group>
-      </b-form>
       <base-dropdown menu-on-right
                      class="nav-item"
                      tag="li"
@@ -39,7 +26,7 @@
                     <img alt="Image placeholder" src="img/theme/rabbit.png">
                   </span>
             <b-media-body class="ml-2 d-none d-lg-block">
-              <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+              <span class="mb-0 text-sm  font-weight-bold">Hi,{{ userID }}</span>
             </b-media-body>
           </b-media>
         </a>
@@ -66,7 +53,7 @@
             <span>Support</span>
           </b-dropdown-item>
           <div class="dropdown-divider"></div>
-          <b-dropdown-item href="#!">
+          <b-dropdown-item href="" @click="logout">
             <i class="ni ni-user-run"></i>
             <span>Logout</span>
           </b-dropdown-item>
@@ -79,7 +66,7 @@
 <script>
 import { CollapseTransition } from 'vue2-transitions';
 import { BaseNav, Modal } from '@/components';
-
+import axios from 'axios';
 export default {
   components: {
     CollapseTransition,
@@ -104,9 +91,17 @@ export default {
       activeNotifications: false,
       showMenu: false,
       searchModalVisible: false,
-      searchQuery: ''
+      searchQuery: '',
+      userID: localStorage.ID
     };
   },
+  // mounted:{
+  //   detect(){
+  //     window.addEventListener('storage', (e) => {
+  //     localStorage.setItem(e.key, e.oldValue)
+  //     })
+  //   }
+  // },
   methods: {
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
@@ -116,6 +111,17 @@ export default {
     },
     closeDropDown() {
       this.activeNotifications = false;
+    },
+    logout(){
+      axios.get('https://happyclick-healthcenter.herokuapp.com/logout')
+          .then( (res) => {
+            console.log("res status", res.status);
+            console.log('logout data:', res.data);
+            console.log("!@#");
+            this.$router.push('/login');
+            localStorage.clear();
+          })
+          .catch( (error) => console.log(error));
     }
   }
 };
