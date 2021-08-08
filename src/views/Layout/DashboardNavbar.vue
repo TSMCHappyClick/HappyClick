@@ -15,19 +15,6 @@
       </li>
     </b-navbar-nav>
     <b-navbar-nav class="align-items-center ml-auto ml-md-0">
-        <b-form class="navbar-search form-inline mr-sm-3"
-            :class="{'navbar-search-dark': type === 'default', 'navbar-search-light': type === 'light'}"
-            id="navbar-search-main">
-        <b-form-group class="mb-0">
-          <b-input-group class="input-group-alternative input-group-merge">
-            <b-form-input placeholder="Search" type="text"> </b-form-input>
-
-            <div class="input-group-append">
-              <span class="input-group-text"><i class="fas fa-search"></i></span>
-            </div>
-          </b-input-group>
-        </b-form-group>
-      </b-form>
       <base-dropdown menu-on-right
                      class="nav-item"
                      tag="li"

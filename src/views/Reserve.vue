@@ -125,6 +125,7 @@ import axios from 'axios'
             }
           })
         }
+        __this.date.sort();
       },
       onSubmit(event) {
         event.preventDefault()
@@ -138,7 +139,8 @@ import axios from 'axios'
             .then(res => {
               console.log("res status", res.status);
               console.log('res data:', res.data);
-
+              alert("Reserve Successfully!");
+              this.$router.push('/check');
             })
             .catch( (error) => console.log(error));
       },

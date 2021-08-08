@@ -64,8 +64,9 @@
       }
     },
     created() {
-        axios
-          .post('https://happyclick-healthcenter.herokuapp.com/checkReserve', {"ID": localStorage.ID})
+      console.log(localStorage.ID)
+      axios
+          .get('https://happyclick-healthcenter.herokuapp.com/checkReserve', {params:{"ID": localStorage.ID}})
           .then(res => {
             console.log(res.data);
             console.log(res.data.date);

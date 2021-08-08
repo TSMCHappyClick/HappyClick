@@ -14,15 +14,6 @@
 
         <sidebar-item
             :link="{
-              name: 'Icons',
-              path: '/icons',
-              icon: 'ni ni-planet text-blue'
-              }"
-            >
-        </sidebar-item>
-
-        <sidebar-item
-            :link="{
               name: 'Reservation',
               path: '/reserve',
               icon: 'ni ni-active-40 text-red'
@@ -47,22 +38,7 @@
                   }">
         </sidebar-item>
 
-        <sidebar-item
-              :link="{
-                name: 'User Profile',
-                path: '/profile',
-                icon: 'ni ni-single-02 text-yellow'
-                }">
-        </sidebar-item>
-
-        <sidebar-item
-                v-if = 'identity != "med"'
-                :link="{
-                  name: 'Tables',
-                  path: '/tables',
-                  icon: 'ni ni-bullet-list-67 text-red'
-                }">
-        </sidebar-item>
+       
       </template>
 
     </side-bar>

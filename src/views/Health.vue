@@ -1,6 +1,5 @@
 <template>
     <div>
-        
         <div class="header pb-2 pt-5 pt-lg-6 d-flex align-items-center">
         <b-container fluid>
             <!-- Mask -->
@@ -17,7 +16,7 @@
             </b-container>
         </b-container>
         </div>
-            <b-card class="mt-3" header="已施打疫苗名單" header-bg-variant="info" header-text-variant="white">
+            <b-card class="mt-3" header="今日預約施打疫苗名單" header-bg-variant="info" header-text-variant="white">
                 <b-card-text>
                 每天於疫苗施打完畢後 (17:00)，更新已施打疫苗的員工資料。
                 </b-card-text>
@@ -27,48 +26,121 @@
 
                 <b-table striped hover :items="items" :fields="fields">
                     <template v-slot:cell(status)="row">
-                        <base-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1" >
+                        <base-button size="sm" @click="myconfirm(row.item)" class="mr-1" >
                             已施打
                         </base-button>
                     </template>
                 </b-table>
-                </b-card>
+            </b-card>
+
+            <b-card class="mt-3" header="新增疫苗資訊" header-bg-variant="default" header-text-variant="white">
+              <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+
+                <b-form-group id="input-group-1" label="Vaccine Type:" label-for="input-1">
+                  <b-form-select
+                    id="input-1"
+                    v-model="addVaccineForm.vaccine_type"
+                    :options="vaccines"
+                    required
+                  ></b-form-select>
+                </b-form-group>
+
+                <b-form-group id="input-group-2" label="Date:" label-for="input-2" description="YYYY-MM-DD">
+                  <b-form-input
+                    id="input-2"
+                    v-model="addVaccineForm.date"
+                    placeholder="Enter availible vaccination date"
+                    required
+                  ></b-form-input>
+                </b-form-group>
+
+                <b-form-group id="input-group-3" label="Amount:" label-for="input-3">
+                  <b-form-input
+                    id="input-3"
+                    v-model="addVaccineForm.vaccine_amount"
+                    placeholder="Enter availible doses of vaccine"
+                    required
+                  ></b-form-input>
+                </b-form-group>
+
+                <b-button type="submit" variant="primary">Submit</b-button>
+                <b-button type="reset" variant="danger">Reset</b-button>
+
+            </b-form>
+          </b-card>  
     </div>
 </template>
 
 <script>
+  import axios from 'axios'
+  import moment from 'moment'
   export default {
     data() {
       return {
-        fields: ['employeeID', 'name', 'vaccine', 'date', 'status'],
-        items:[
-            {employeeID: 120332 ,name: 'Anson',vaccine: 'AstraZeneca', date: '2021-08-08', status: '已施打'},
-        ],
-        form: {
-          employeeID: '',
-          name: '',
-          vaccine: null,
-          date: null,
-          status: null
+        fields: ['employeeID', 'name', 'vaccine', 'status'],
+        items:[],
+        addVaccineForm: {
+          vaccine_type: null,
+          date: '',
+          vaccine_amount: ''
         },
-        vaccine: [{ text: 'Select One', value: null }, 'AstraZeneca', 'Moderna', 'BioNTech', '高端'],
-        status: [{text: 'Select One', value: null}, '已施打'],
+        vaccines: [{ text: 'Select One', value: null }, 'AstraZeneca', 'Moderna', 'BioNTech'],
         show: true
       }
     },
+    created(){
+      var __this = this;
+      var today = new Date();
+      var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+      date = moment(String(date)).format('YYYY-MM-DD')
+      console.log(date);
+      
+      axios
+        .get('https://happyclick-healthcenter.herokuapp.com/searchFormdata', {params:{"date": date}})
+        .then(res => {
+          console.log(res.data);
+          res.data.forEach(function(item) {
+            console.log(item);
+            __this.items.push({form_id: item.form_id, employeeID: item.ID, name: item.Name, vaccine: item.vaccine_type})
+          });
+        })
+          .catch( (error) => console.log(error));
+    },
     methods: {
+      myconfirm (item, index, target) {
+        const vaccinatedData = {"form_id": item.form_id, "ID": item.employeeID, "Name": item.name};
+        if(confirm('請確認資料~',vaccinatedData)==true){
+          this.handleDelete(vaccinatedData)
+        }
+      },
+      ckeckVaccinated(vaccinatedData){
+        
+        console.log(vaccinatedData);
+        axios
+          .post('https://happyclick-healthcenter.herokuapp.com/updateVaccinated', vaccinatedData)
+          .then(res => {
+            console.log(res.data);
+          })
+          .catch( (error) => console.log(error));
+      },
       onSubmit(event) {
         event.preventDefault()
-        alert(JSON.stringify(this.form))
+        console.log(JSON.stringify(this.addVaccineForm));
+        axios
+        .post('https://happyclick-healthcenter.herokuapp.com/updateVaccine', JSON.stringify(this.addVaccineForm))
+        .then(res => {
+          console.log(res.data);
+        })
+          .catch( (error) => console.log(error));
+        
       },
       onReset(event) {
         event.preventDefault()
         // Reset our form values
-        this.form.employeeID = ''
-        this.form.name = ''
-        this.form.vaccine = null
-        this.form.date = null
-        this.form.status = null
+        this.addVaccineForm.vaccine_type = null,
+        this.addVaccineForm.date = '',
+        this.addVaccineForm.vaccine_amount = '' 
+
         // Trick to reset/clear native browser form validation state
         this.show = false
         this.$nextTick(() => {
