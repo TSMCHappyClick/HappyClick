@@ -12,7 +12,6 @@
             <h1 class="display-3 text-white">Reservation</h1>
             <p class="text-white mt-0 mb-5">Please reserve the vaccine on this page.
             </p>
-            
             </b-col>
         </b-row>
         </b-container>
@@ -40,7 +39,7 @@
         <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
           <b-form-input
             id="input-2"
-            v-model="form.Name"
+            v-model="form.username"
             placeholder="Enter name"
             required
           ></b-form-input>
@@ -75,13 +74,13 @@
 </template>
 
 <script>
-import axios from 'axios'
+  import axios from 'axios'
   export default {
     data() {
       return {
         form: {
-          employeeID: localStorage.ID,
-          Name: '',
+          employeeID: localStorage.id,
+          username: '',
           vaccine: null,
           date:null
         },
@@ -110,6 +109,7 @@ import axios from 'axios'
               }
             });
           })
+          .catch( (error) => console.log(error));
       
     },
     methods: {
@@ -134,7 +134,7 @@ import axios from 'axios'
         alert(JSON.stringify(this.form))
         console.log("test")
         console.log(this.vaccine_type);
-        const reserveData = { ID: this.form.employeeID, Name: this.form.Name, date: this.form.date, vaccine_type: this.form.vaccine };
+        const reserveData = { id: this.form.employeeID, username: this.form.username, date: this.form.date, vaccine_type: this.form.vaccine };
         console.log(reserveData)
         axios
             .post('https://happyclick-healthcenter.herokuapp.com/saveReserve',reserveData)
@@ -152,7 +152,7 @@ import axios from 'axios'
         event.preventDefault()
         // Reset our form values
         this.form.employeeID = ''
-        this.form.Name = ''
+        this.form.username = ''
         this.form.vaccine = null
         this.form.date = null
         // Trick to reset/clear native browser form validation state

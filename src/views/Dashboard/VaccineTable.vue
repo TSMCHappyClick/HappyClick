@@ -36,10 +36,11 @@
   </b-card>
 </template>
 <script>
+  import axios from 'axios'
   import { BaseProgress } from '@/components';
   import { Table, TableColumn, DropdownMenu, DropdownItem, Dropdown} from 'element-ui'
   export default {
-    name: 'social-traffic-table',
+    name: 'vaccine-table',
     components: {
       BaseProgress,
       [Table.name]: Table,
@@ -53,26 +54,33 @@
         tableData: [
           {
             name: 'AstraZeneca',
-            progress: 60,
+            progress: 0,
             progressType: 'gradient-danger',
           },
           {
             name: 'Moderna',
-            progress: 30,
+            progress: 0,
             progressType: 'gradient-success',
           },
           {
             name: 'BioNTech',
-            progress: 8,
+            progress: 0,
             progressType: 'gradient-primary',
-          },
-          {
-            name: '高端',
-            progress: 2,
-            progressType: 'gradient-info',
-          },
+          }
         ]
       }
+    },
+    created() {
+      var __this = this;
+        axios
+          .get('https://happyclick-healthcenter.herokuapp.com/find_vaccine_shot_rate')
+          .then(res => {
+            // console.log(res.data);
+            this.tableData[0].progress = Math.round(res.data.AstraZeneca*10000)/100;
+            this.tableData[1].progress = Math.round(res.data.Moderna*10000)/100;
+            this.tableData[2].progress = Math.round(res.data.BioNTech*10000)/100;
+            
+          });
     }
   }
 </script>

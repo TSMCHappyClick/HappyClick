@@ -101,14 +101,14 @@
           console.log(res.data);
           res.data.forEach(function(item) {
             console.log(item);
-            __this.items.push({form_id: item.form_id, employeeID: item.ID, name: item.Name, vaccine: item.vaccine_type})
+            __this.items.push({form_id: item.form_id, employeeID: item.id, name: item.username, vaccine: item.vaccine_type})
           });
         })
           .catch( (error) => console.log(error));
     },
     methods: {
       myconfirm (item, index, target) {
-        const vaccinatedData = {"form_id": item.form_id, "ID": item.employeeID, "Name": item.name};
+        const vaccinatedData = {"form_id": item.form_id, "id": item.employeeID, "Name": item.name};
         if(confirm('請確認已施打人員之資料，確定修改嗎?')==true){
           this.ckeckVaccinated(vaccinatedData)
         }
