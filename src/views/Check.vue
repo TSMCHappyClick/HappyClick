@@ -58,15 +58,15 @@
       return {
         fields: ['employeeID', 'vaccine_type','date'],
         items:[
-            {employeeID: localStorage.ID ,vaccine_type: 'None', date:'None'}],
+            {employeeID: localStorage.id ,vaccine_type: 'None', date:'None'}],
         dismissSecs: 3,
         dismissCountDown: 0
       }
     },
     created() {
-      console.log(localStorage.ID)
+      console.log(localStorage.id)
       axios
-          .get('https://happyclick-healthcenter.herokuapp.com/checkReserve', {params:{"ID": localStorage.ID}})
+          .get('https://happyclick-healthcenter.herokuapp.com/checkReserve', {params:{"id": localStorage.id}})
           .then(res => {
             console.log(res.data);
             console.log(res.data.date);
@@ -84,7 +84,7 @@
         }
       },
       handleDelete() {
-        const reservedData = {"ID": localStorage.ID, "date": this.items[0].date, 
+        const reservedData = {"id": localStorage.od, "date": this.items[0].date, 
                               "vaccine_type": this.items[0].vaccine_type};
         console.log(reservedData);
         axios

@@ -10,25 +10,17 @@
                       sub-title="0.51%"
                       icon="fas fa-syringe"
                       class="mb-4">
-
-            <template slot="footer">
-              <span class="text-success mr-2">0.47%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
+                      <h3>龍潭廠區疫苗施打率: {{regionData.rate_1 }}%</h3>
           </stats-card>
         </b-col>
         <b-col xl="3" md="6">
           <stats-card title="竹科廠區疫苗施打率"
                       type="gradient-orange"
-                      sub-title="0.68%"
                       icon="fas fa-syringe"
                       class="mb-4">
-
-            <template slot="footer">
-              <span class="text-success mr-2">0.53%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
+                      <h3>竹科廠區疫苗施打率: {{ regionData.rate_2 }}%</h3>
           </stats-card>
+          
         </b-col>
 
         <b-col xl="3" md="6">
@@ -37,11 +29,7 @@
                       sub-title="0.43%"
                       icon="fas fa-syringe"
                       class="mb-4">
-
-            <template slot="footer">
-              <span class="text-danger mr-2">0.32%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
+                      <h3>中科廠區疫苗施打率: {{ regionData.rate_3 }}%</h3>
           </stats-card>
         </b-col>
 
@@ -51,39 +39,37 @@
                       sub-title="0.47%"
                       icon="fas fa-syringe"
                       class="mb-4">
-
-            <template slot="footer">
-              <span class="text-success mr-2">0.28%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
+                      <h3>南科廠區疫苗施打率: {{ regionData.rate_4 }}%</h3>
           </stats-card>
         </b-col>
 
-        <b-col xl="6" md="6">
-          <stats-card title="台灣廠區總疫苗施打率"
+        <b-col xl="4" md="6">
+          <stats-card title="中國廠區疫苗施打率"
                       type="gradient-info"
                       sub-title="0.48%"
                       icon="fas fa-syringe"
                       class="mb-4">
-
-            <template slot="footer">
-              <span class="text-success mr-2">0.26%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
+                      <h3>中國廠區疫苗施打率: {{ regionData.rate_5 }}%</h3>
           </stats-card>
         </b-col>
 
-        <b-col xl="6" md="6">
-          <stats-card title="海外廠區總疫苗施打率"
-                      type="gradient-info"
-                      sub-title="34.76%"
+        <b-col xl="4" md="6">
+          <stats-card title="美國廠區疫苗施打率"
+                      type="gradient-purple"
+                      sub-title="12.76%"
                       icon="fas fa-syringe"
                       class="mb-4">
+                      <h3>美國廠區疫苗施打率: {{ regionData.rate_6 }}%</h3>
+          </stats-card>
+        </b-col>
 
-            <template slot="footer">
-              <span class="text-success mr-2">25.06%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
+        <b-col xl="4" md="6">
+          <stats-card title="新加坡廠區疫苗施打率"
+                      type="gradient-default"
+                      sub-title="0.51%"
+                      icon="fas fa-syringe"
+                      class="mb-4">
+                      <h3>新加坡廠區疫苗施打率: {{ regionData.rate_7 }}%</h3>
           </stats-card>
         </b-col>
 
@@ -93,42 +79,11 @@
     <!--Charts-->
     <b-container fluid class="mt--7">
       <b-row>
-        <b-col xl="7" class="mb-5 mb-xl-0">
-          <card type="default" header-classes="bg-transparent">
-            <b-row align-v="center" slot="header">
-              <b-col>
-                <h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6>
-                <h5 class="h3 text-white mb-0">TSMC台灣整體疫苗施打率</h5>
-              </b-col>
-              <b-col>
-                <b-nav class="nav-pills justify-content-end">
-                  <b-nav-item
-                       class="mr-2 mr-md-0"
-                       :active="bigLineChart.activeIndex === 0"
-                       link-classes="py-2 px-3"
-                       @click.prevent="initBigChart(0)">
-                      <span class="d-none d-md-block">2021</span>
-                      <span class="d-md-none">M</span>
-                  </b-nav-item>
-                </b-nav>
-              </b-col>
-            </b-row>
-            <line-chart
-              :height="350"
-              ref="bigChart"
-              :chart-data="bigLineChart.chartData"
-              :extra-options="bigLineChart.extraOptions"
-            >
-            </line-chart>
-          </card>
-        </b-col>
-
-        <b-col xl="5" class="mb-5 mb-xl-0">
+        <b-col xl="12" class="mb-5 mb-xl-0">
           <card header-classes="bg-transparent">
             <b-row align-v="center" slot="header">
               <b-col>
-                <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-                <h5 class="h3 mb-0">部門施打比率</h5>
+                <h5 class="h3 mb-0">各廠區施打率(%)</h5>
               </b-col>
             </b-row>
 
@@ -145,11 +100,11 @@
 
       <!--Tables-->
       <b-row class="mt-5">
-        <b-col xl="7" class="mb-5 mb-xl-0">
-          <page-visits-table></page-visits-table>
+        <b-col xl="6" class="mb-5 mb-xl-0">
+          <vaccine-table></vaccine-table>
         </b-col>
-        <b-col xl="5" class="mb-5 mb-xl-0">
-          <social-traffic-table></social-traffic-table>
+        <b-col xl="6" class="mb-5 mb-xl-0">
+          <employee-table ></employee-table>
         </b-col>
       </b-row>
       <!--End tables-->
@@ -158,49 +113,41 @@
   </div>
 </template>
 <script>
+  import axios from 'axios'
   // Charts
   import * as chartConfigs from '@/components/Charts/config';
-  import LineChart from '@/components/Charts/LineChart';
   import BarChart from '@/components/Charts/BarChart';
   // Components
   import BaseProgress from '@/components/BaseProgress';
   import StatsCard from '@/components/Cards/StatsCard';
   // Tables
-  import SocialTrafficTable from './Dashboard/SocialTrafficTable';
-  import PageVisitsTable from './Dashboard/PageVisitsTable';
+  import EmployeeTable from './Dashboard/EmployeeTable';
+  import VaccineTable from './Dashboard/VaccineTable';
   export default {
     components: {
-      LineChart,
       BarChart,
       BaseProgress,
       StatsCard,
-      PageVisitsTable,
-      SocialTrafficTable
+      EmployeeTable,
+      VaccineTable
     },
     data() {
       return {
-        bigLineChart: {
-          allData: [
-            [4, 15, 36, 54, 87, 139, 267, 413]
-          ],
-          activeIndex: 0,
-          chartData: {
-            datasets: [
-              {
-                label: '施打人數',
-                data: [0, 50, 10, 30, 15, 40, 20, 60, 60],
-              }
-            ],
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-          },
-          extraOptions: chartConfigs.blueChartOptions,
+        regionData:{
+          rate_1: 30,
+          rate_2: 20,
+          rate_3: 60,
+          rate_4: 10,
+          rate_5: 23,
+          rate_6: 87,
+          rate_7: 78,
         },
         redBarChart: {
           chartData: {
-            labels: ['R&D', '製程', '設備', 'IT', '業務', '營運'],
+            labels: [],
             datasets: [{
-              label: '施打人數',
-              data: [87, 52 , 75, 64, 79, 56]
+              label: '施打疫苗比率(%)',
+              data: []
             }]
           },
           extraOptions: chartConfigs.blueChartOptions
@@ -208,22 +155,38 @@
       };
     },
     methods: {
-      initBigChart(index) {
-        let chartData = {
-          datasets: [
-            {
-              label: 'Performance',
-              data: this.bigLineChart.allData[index]
-            }
-          ],
-          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug']
-        };
-        this.bigLineChart.chartData = chartData;
-        this.bigLineChart.activeIndex = index;
-      }
     },
     mounted() {
-      this.initBigChart(0);
+      var __this = this;
+      //get data for division shot
+      axios
+          .get('https://happyclick-healthcenter.herokuapp.com/find_division_shot_rate')
+          .then(res => {
+            console.log(res.data);
+            console.log(res.data['竹科'])
+            __this.regionData.rate_1 = res.data['龍潭封測廠'];
+            console.log("!!!!!:",__this.regionData.rate_1)
+            __this.regionData.rate_2 = Math.round(res.data['竹科']*10000)/100;
+            __this.regionData.rate_3 = Math.round(res.data['中科']*10000)/100;
+            __this.regionData.rate_4 = Math.round(res.data['南科']*10000)/100;
+            __this.regionData.rate_5 = Math.round(res.data['中國']*10000)/100;
+            __this.regionData.rate_ˊ = Math.round(res.data['美國']*10000)/100;
+            __this.regionData.rate_7 = Math.round(res.data['新加坡']*10000)/100;
+          })
+          .catch( (error) => console.log(error));
+      //get data for barChart 
+      axios
+          .get('https://happyclick-healthcenter.herokuapp.com/find_fac_shot_rate')
+          .then(res => {
+            console.log("test");
+            console.log(res.data);
+            console.log(res.data.factories);
+            __this.redBarChart.chartData.labels = res.data.factorys;
+            __this.redBarChart.chartData.datasets[0].data = res.data.rate;
+            // {'factorys':['F12A', 'F12B', 'F2', 'F3', 'F5', 'F6', 'F8', 'F15A', 'F15B', 'F14A', 'F14B', 'F18', 'F16', 'F10', 'F11', 'SSMC', 'AP1', 'AP2', 'AP3', 'AP5'],
+            // 'rate':[0.6666666666666666, 0.2, 0.625, 0.3333333333333333, 0.6, 1.0, 0.0, 0.25, 0.25, 0.625, 0.2857142857142857, 0.8, 0.625, 0.5, 0.25, 0.42857142857142855, 0.25, 0.16666666666666666, 0.0, 0.3333333333333333]}
+          })
+          .catch( (error) => console.log(error));
     }
   };
 </script>
