@@ -8,7 +8,7 @@
           <stats-card title="龍潭廠區疫苗施打率"
                       type="gradient-red"
                       sub-title="0.51%"
-                      icon="fas fa-syringe"
+                      icon="ni ni-chart-bar-32"
                       class="mb-4">
           </stats-card>
         </b-col>
@@ -16,7 +16,7 @@
           <stats-card title="竹科廠區疫苗施打率"
                       type="gradient-orange"
                       sub-title="0.68%"
-                      icon="fas fa-syringe"
+                      icon="ni ni-chart-bar-32"
                       class="mb-4">
           </stats-card>
         </b-col>
@@ -25,7 +25,7 @@
           <stats-card title="中科廠區疫苗施打率"
                       type="gradient-yellow"
                       sub-title="0.43%"
-                      icon="fas fa-syringe"
+                      icon="ni ni-chart-bar-32"
                       class="mb-4">
           </stats-card>
         </b-col>
@@ -34,7 +34,7 @@
           <stats-card title="南科廠區疫苗施打率"
                       type="gradient-green"
                       sub-title="0.47%"
-                      icon="fas fa-syringe"
+                      icon="ni ni-chart-bar-32"
                       class="mb-4">
           </stats-card>
         </b-col>
@@ -43,7 +43,7 @@
           <stats-card title="中國廠區疫苗施打率"
                       type="gradient-info"
                       sub-title="0.48%"
-                      icon="fas fa-syringe"
+                      icon="ni ni-chart-bar-32"
                       class="mb-4">
           </stats-card>
         </b-col>
@@ -52,7 +52,7 @@
           <stats-card title="美國廠區疫苗施打率"
                       type="gradient-purple"
                       sub-title="12.76%"
-                      icon="fas fa-syringe"
+                      icon="ni ni-chart-bar-32"
                       class="mb-4">
           </stats-card>
         </b-col>
@@ -61,7 +61,7 @@
           <stats-card title="新加坡廠區疫苗施打率"
                       type="gradient-default"
                       sub-title="0.51%"
-                      icon="fas fa-syringe"
+                      icon="ni ni-chart-bar-32"
                       class="mb-4">
           </stats-card>
         </b-col>
