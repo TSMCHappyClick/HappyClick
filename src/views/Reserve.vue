@@ -47,7 +47,7 @@
 
         <b-form-group id="input-group-3" label="Vaccine Type:" label-for="input-3" >
           <b-form-select
-          @change="onChange"
+            @change="onChange"
             id="input-3"
             v-model="form.vaccine"
             :options="vaccine_type"
@@ -82,11 +82,11 @@
           employeeID: localStorage.id,
           username: localStorage.username,
           vaccine: null,
-          date:null
+          date: null
         },
         vacAndDate: [],
         vaccine_type: [{ text: 'Select one', value: null }],
-        date: [{ text: 'Select one', value: null },'GG'],
+        date: [{ text: 'Select one', value: null }],
         show: true
       }
     },
@@ -130,28 +130,30 @@
 
       },
       onSubmit(event) {
-        event.preventDefault()
-        console.log("test");
-        console.log(this.vaccine_type);
-        const reserveData = { id: this.form.employeeID, username: this.form.username, date: this.form.date, vaccine_type: this.form.vaccine };
-        console.log(reserveData);
-        axios
-            .post('https://happyclick-healthcenter.herokuapp.com/saveReserve',reserveData)
-            .then(res => {
-              console.log("res status", res.status);
-              console.log('res data:', res.data);
+        if (this.form.date==null) alert("Please Choose Date!")
+        else{
+          event.preventDefault()
+          console.log(this.vaccine_type);
+          const reserveData = { id: this.form.employeeID, username: this.form.username, date: this.form.date, vaccine_type: this.form.vaccine };
+          console.log(reserveData);
+          axios
+              .post('https://happyclick-healthcenter.herokuapp.com/saveReserve',reserveData)
+              .then(res => {
+                console.log("res status", res.status);
+                console.log('res data:', res.data);
 
-              alert(res.data.msg);
-              this.$router.push('/check');
+                alert(res.data.msg);
+                this.$router.push('/check');
 
-            })
-            .catch( (error) => console.log(error));
+              })
+              .catch( (error) => console.log(error));
+        }
       },
       onReset(event) {
         event.preventDefault()
         // Reset our form values
-        this.form.employeeID = ''
-        this.form.username = ''
+        this.form.employeeID = localStorage.id
+        this.form.username = localStorage.username
         this.form.vaccine = null
         this.form.date = null
         // Trick to reset/clear native browser form validation state
