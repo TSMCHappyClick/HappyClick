@@ -111,7 +111,7 @@
     },
     methods: {
       myconfirm (item, index, target) {
-        const vaccinatedData = {"form_id": item.form_id, "id": item.employeeID, "userame": item.name};
+        const vaccinatedData = {"form_id": item.form_id, "id": item.employeeID, "username": item.name};
         if(confirm('請確認已施打人員之資料，確定修改嗎?')==true){
           this.ckeckVaccinated(vaccinatedData)
           this.created()
