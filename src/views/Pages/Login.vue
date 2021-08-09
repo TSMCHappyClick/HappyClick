@@ -90,18 +90,13 @@
             console.log("res status", res.status);
             console.log('res data:', res.data);
 
-            if (res.data.identity == 'Wrong id or password!') {
+            if (res.status != 200) {
               console.log("login err");
               alert("wrong ID or password!");
               this.$router.push('/login');
             }
             else {
-              if (res.data.identity){
-                localStorage.identity = res.data.identity;
-              }
-              else{
-                localStorage.identity = 'staff'
-              }
+              localStorage.identity = res.data.identity;
               localStorage.setItem("id", this.model.employeeID);
               localStorage.username = res.data.username;
               localStorage.status = "logged in";

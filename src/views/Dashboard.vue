@@ -134,13 +134,13 @@
     data() {
       return {
         regionData:{
-          rate_1: 30,
-          rate_2: 20,
-          rate_3: 60,
-          rate_4: 10,
-          rate_5: 23,
-          rate_6: 87,
-          rate_7: 78,
+          rate_1: 0,
+          rate_2: 0,
+          rate_3: 0,
+          rate_4: 0,
+          rate_5: 0,
+          rate_6: 0,
+          rate_7: 0,
         },
         redBarChart: {
           chartData: {
@@ -164,13 +164,12 @@
           .then(res => {
             console.log(res.data);
             console.log(res.data['竹科'])
-            __this.regionData.rate_1 = res.data['龍潭封測廠'];
-            console.log("!!!!!:",__this.regionData.rate_1)
+            __this.regionData.rate_1 = Math.round(res.data['龍潭封測廠']*10000)/100;
             __this.regionData.rate_2 = Math.round(res.data['竹科']*10000)/100;
             __this.regionData.rate_3 = Math.round(res.data['中科']*10000)/100;
             __this.regionData.rate_4 = Math.round(res.data['南科']*10000)/100;
             __this.regionData.rate_5 = Math.round(res.data['中國']*10000)/100;
-            __this.regionData.rate_ˊ = Math.round(res.data['美國']*10000)/100;
+            __this.regionData.rate_6 = Math.round(res.data['美國']*10000)/100;
             __this.regionData.rate_7 = Math.round(res.data['新加坡']*10000)/100;
           })
           .catch( (error) => console.log(error));

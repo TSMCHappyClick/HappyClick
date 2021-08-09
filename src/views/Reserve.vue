@@ -131,7 +131,6 @@
       },
       onSubmit(event) {
         event.preventDefault()
-        alert(JSON.stringify(this.form))
         console.log("test")
         console.log(this.vaccine_type);
         const reserveData = { id: this.form.employeeID, username: this.form.username, date: this.form.date, vaccine_type: this.form.vaccine };
@@ -142,7 +141,7 @@
               console.log("res status", res.status);
               console.log('res data:', res.data);
 
-              alert("Reserve Successfully!");
+              alert(res.data.msg);
               this.$router.push('/check');
 
             })
