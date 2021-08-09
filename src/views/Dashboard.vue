@@ -156,7 +156,7 @@
     },
     methods: {
     },
-    mounted() {
+    created() {
       var __this = this;
       //get data for division shot
       axios
@@ -174,18 +174,30 @@
           })
           .catch( (error) => console.log(error));
       //get data for barChart 
+
+      console.log("ORIGINAL:",typeof(this.redBarChart.chartData.datasets[0].data));
       axios
           .get('https://happyclick-healthcenter.herokuapp.com/find_fac_shot_rate')
           .then(res => {
             console.log("test");
             console.log(res.data);
-            console.log(res.data.factories);
-            __this.redBarChart.chartData.labels = res.data.factorys;
-            __this.redBarChart.chartData.datasets[0].data = res.data.rate;
+            console.log("FAC:",res.data.factories);
+
+            __this.redBarChart= {
+              chartData: {
+                labels: res.data.factories,
+                datasets: [{
+                  label: '施打疫苗比率(%)',
+                  data: res.data.rate
+                }]
+              },
+              extraOptions: chartConfigs.blueChartOptions
+            }
             // {'factorys':['F12A', 'F12B', 'F2', 'F3', 'F5', 'F6', 'F8', 'F15A', 'F15B', 'F14A', 'F14B', 'F18', 'F16', 'F10', 'F11', 'SSMC', 'AP1', 'AP2', 'AP3', 'AP5'],
             // 'rate':[0.6666666666666666, 0.2, 0.625, 0.3333333333333333, 0.6, 1.0, 0.0, 0.25, 0.25, 0.625, 0.2857142857142857, 0.8, 0.625, 0.5, 0.25, 0.42857142857142855, 0.25, 0.16666666666666666, 0.0, 0.3333333333333333]}
           })
           .catch( (error) => console.log(error));
+          console.log("AFTERALL:",this.redBarChart.chartData.labels)
     }
   };
 </script>

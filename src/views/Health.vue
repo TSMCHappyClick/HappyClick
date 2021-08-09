@@ -49,6 +49,7 @@
                   <b-form-input
                     id="input-2"
                     v-model="addVaccineForm.date"
+                    type="date"
                     placeholder="Enter availible vaccination date"
                     required
                   ></b-form-input>
@@ -58,7 +59,9 @@
                   <b-form-input
                     id="input-3"
                     v-model="addVaccineForm.vaccine_amount"
+                    type="number"
                     placeholder="Enter availible doses of vaccine"
+                    min="1" max="999"
                     required
                   ></b-form-input>
                 </b-form-group>
