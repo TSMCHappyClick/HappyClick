@@ -80,7 +80,7 @@
       return {
         form: {
           employeeID: localStorage.id,
-          username: '',
+          username: localStorage.username,
           vaccine: null,
           date:null
         },
@@ -131,10 +131,10 @@
       },
       onSubmit(event) {
         event.preventDefault()
-        console.log("test")
+        console.log("test");
         console.log(this.vaccine_type);
         const reserveData = { id: this.form.employeeID, username: this.form.username, date: this.form.date, vaccine_type: this.form.vaccine };
-        console.log(reserveData)
+        console.log(reserveData);
         axios
             .post('https://happyclick-healthcenter.herokuapp.com/saveReserve',reserveData)
             .then(res => {

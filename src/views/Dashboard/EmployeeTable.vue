@@ -5,9 +5,6 @@
         <b-col>
           <h3 class="mb-0">所屬員工疫苗施打情形</h3>
         </b-col>
-        <b-col class="text-right">
-          <base-button size="sm" type="primary">See all</base-button>
-        </b-col>
       </b-row>
     </template>
 
@@ -44,6 +41,7 @@
       }
     },
     created() {
+      if (localStorage.identity=="staff"){
         var __this = this;
         axios
           .get('https://happyclick-healthcenter.herokuapp.com/find_employees_under_staff',{params:{"id":localStorage.id}})
@@ -63,6 +61,7 @@
               });
             });
           });
+      }
     }
   }
   
