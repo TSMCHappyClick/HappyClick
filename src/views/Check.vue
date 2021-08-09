@@ -40,7 +40,7 @@
                         >
                           您的預約資料已刪除，請重新預約! {{ dismissCountDown }} 
                         </b-alert>
-                        <b-button @click="myconfirm" variant="info" class="m-1" >
+                        <b-button @click="myconfirm" variant="info" class="m-1" v-if= "this.items[0].vaccine_type!=null">
                           刪除預約資料
                         </b-button>
                     </b-card-text>
@@ -58,7 +58,7 @@
       return {
         fields: ['employeeID', 'vaccine_type','date'],
         items:[
-            {employeeID: localStorage.id ,vaccine_type: 'None', date:'None'}],
+            {employeeID: null ,vaccine_type: null, date:null}],
         dismissSecs: 3,
         dismissCountDown: 0
       }
@@ -68,10 +68,8 @@
       axios
           .get('https://happyclick-healthcenter.herokuapp.com/checkReserve', {params:{"id": localStorage.id}})
           .then(res => {
-            console.log(res.data);
-            console.log(res.data.date);
-            console.log(res.data.vaccine_type);
-            console.log(this.items[0].vaccine_type);
+            // console.log(res.data);
+            if(res.data.vaccine_type) this.items[0].employeeID = localStorage.id;
             this.items[0].vaccine_type = res.data.vaccine_type;
             this.items[0].date = res.data.date;
           })
