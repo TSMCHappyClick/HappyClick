@@ -89,21 +89,17 @@
           .then(res => {
             console.log("res status", res.status);
             console.log('res data:', res.data);
-
-            if (res.status != 200) {
-              console.log("login err");
-              alert("wrong ID or password!");
-              this.$router.push('/login');
-            }
-            else {
-              localStorage.identity = res.data.identity;
-              localStorage.setItem("id", this.model.employeeID);
-              localStorage.username = res.data.username;
-              localStorage.status = "logged in";
-              this.$router.push('/dashboard');
-            }
+            
+            localStorage.identity = res.data.identity;
+            localStorage.setItem("id", this.model.employeeID);
+            localStorage.username = res.data.username;
+            localStorage.status = "logged in";
+            this.$router.push('/dashboard');
           })
-          .catch( (error) => console.log(error));
+          .catch( (error) => {
+              console.log(error);
+              alert("wrong ID or password!");
+          });
 
       }
     }
