@@ -3,7 +3,7 @@
     <template v-slot:header>
       <b-row align-v="center">
         <b-col>
-          <h3 class="mb-0">各品牌疫苗施打率(%)</h3>
+          <h3 class="mb-0">各品牌疫苗施打比例(%)</h3>
         </b-col>
         <b-col class="text-right">
           <base-button size="sm" type="primary">See all</base-button>

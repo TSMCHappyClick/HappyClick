@@ -84,7 +84,7 @@
         }
       },
       handleDelete() {
-        const reservedData = {"id": localStorage.od, "date": this.items[0].date, 
+        const reservedData = {"id": localStorage.id, "date": this.items[0].date, 
                               "vaccine_type": this.items[0].vaccine_type};
         console.log(reservedData);
         axios
