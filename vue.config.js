@@ -5,6 +5,7 @@ function resolveSrc(_path) {
 }
 module.exports = {
   publicPath: '/HappyClick/',
+  outputDir: 'dist/HappyClick/',
   lintOnSave: true,
   configureWebpack: {
     // Set up all the aliases we use in our app.
