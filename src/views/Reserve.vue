@@ -22,7 +22,7 @@
     <!-- Card stats -->
     <!-- Header -->
     <b-card class="mt-3" header="疫苗預約資訊" header-bg-variant="default" header-text-variant="white">
-      <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+      <b-form @submit="onSubmit" @reset="onReset" v-if="show" name="form">
         <b-form-group
           id="input-group-1"
           label="Employee ID:"
@@ -30,6 +30,7 @@
           description="We'll never share your information with anyone else."
         >
           <b-form-input
+            name = "input-1"
             id="input-1"
             v-model="form.employeeID"
             placeholder="Enter employee ID"
@@ -67,7 +68,7 @@
 
 
         <b-button type="submit" variant="primary">Submit</b-button>
-        <b-button type="reset" variant="danger">Reset</b-button>
+        <b-button name="reset" type="reset" variant="danger">Reset</b-button>
       </b-form>
     </b-card>
   
@@ -77,6 +78,7 @@
 <script>
 import axios from 'axios'
   export default {
+    name:"reserve",
     data() {
       return {
         form: {

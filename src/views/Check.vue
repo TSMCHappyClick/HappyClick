@@ -54,6 +54,7 @@
 <script>
   import axios from 'axios'
   export default {
+    name:"check",
     data() {
       return {
         fields: ['employeeID', 'vaccine_type','date'],

@@ -5,7 +5,7 @@
       <!-- Card stats -->
       <b-row>
         <b-col xl="3" md="6">
-          <stats-card title=$t('GENERAL.LT')
+          <stats-card title="龍潭廠區疫苗施打率"
                       type="gradient-red"
                       sub-title="0.51%"
                       icon="fas fa-syringe"

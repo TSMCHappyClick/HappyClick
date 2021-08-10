@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import DashboardPlugin from './plugins/dashboard-plugin';
 import App from './App.vue';
-import i18n from '././common/plugins/vue-i18n'
+import i18n from './common/plugins/vue-i18n'
 // router setup
 import router from './routes/router';
 

@@ -2,13 +2,15 @@
   "name": "bootstrap-vue-argon-dashboard",
   "version": "1.0.0",
   "private": true,
+  "description": "BootstrapVue Argon Dashboard",
+  "author": "Creative Tim - https://www.creative-tim.com/",
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "dev": "npm run serve",
     "deploy": "npm run build && node ./deploy/ghpages.js",
-    "test:unit": "vue-cli-service test:unit"
+    "dev": "npm run serve"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -43,9 +45,10 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",
-    "@vue/cli-plugin-unit-jest": "^4.5.13",
+    "@vue/cli-plugin-unit-jest": "~4.5.0",
     "@vue/cli-service": "^4.5.13",
     "@vue/eslint-config-prettier": "^4.0.1",
+    "@vue/test-utils": "^1.0.3",
     "babel-plugin-component": "^1.1.0",
     "crypto-js": "^4.1.1",
     "flush-promises": "^1.0.2",
@@ -63,7 +66,5 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 10"
-  ],
-  "author": "Creative Tim - https://www.creative-tim.com/",
-  "description": "BootstrapVue Argon Dashboard"
+  ]
 }
