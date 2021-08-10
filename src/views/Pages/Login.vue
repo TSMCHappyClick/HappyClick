@@ -42,7 +42,6 @@
                               v-model="model.password">
                   </base-input>
 
-                  <b-form-checkbox v-model="model.rememberMe">Remember me</b-form-checkbox>
                   <div class="text-center">
                     <base-button type="primary" native-type="submit" class="my-4">Sign in</base-button>
                   </div>
@@ -50,14 +49,6 @@
               </validation-observer>
             </b-card-body>
           </b-card>
-          <b-row class="mt-3">
-            <b-col cols="6">
-              <router-link to="/dashboard" class="text-light"><small>Forgot password?</small></router-link>
-            </b-col>
-            <b-col cols="6" class="text-right">
-              <router-link to="/register" class="text-light"><small>Create new account</small></router-link>
-            </b-col>
-          </b-row>
         </b-col>
       </b-row>
     </b-container>
@@ -72,8 +63,7 @@
       return {
         model: {
           employeeID: '',
-          password: '',
-          rememberMe: true
+          password: ''
         }
       };
     },
@@ -87,9 +77,8 @@
         axios
           .post("https://happyclick-healthcenter.herokuapp.com/login", accountData)
           .then(res => {
-            console.log("res status", res.status);
-            console.log('res data:', res.data);
-            
+            // console.log("res status", res.status);
+            // console.log('res data:', res.data);
             localStorage.identity = res.data.identity;
             localStorage.setItem("id", this.model.employeeID);
             localStorage.username = res.data.username;
@@ -97,7 +86,7 @@
             this.$router.push('/dashboard');
           })
           .catch( (error) => {
-              console.log(error);
+              // console.log(error);
               alert("wrong ID or password!");
           });
 

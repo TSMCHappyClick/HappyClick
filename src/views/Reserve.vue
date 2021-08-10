@@ -95,21 +95,23 @@
         axios
           .get('https://happyclick-healthcenter.herokuapp.com/returnAvailable')
           .then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             res.data.forEach(function(item, index, array) {
               __this.vacAndDate.push({
                   'key': item.vaccine_type,
                   'value': item.date
               });
-              console.log("V&D:",__this.vacAndDate[0].key);
-              console.log(item.vaccine_type, item.date);
-              console.log(__this.vaccine_type);
+              // console.log("V&D:",__this.vacAndDate[0].key);
+              // console.log(item.vaccine_type, item.date);
+              // console.log(__this.vaccine_type);
               if (!__this.vaccine_type.includes(item.vaccine_type)){
                 __this.vaccine_type.push(item.vaccine_type);
               }
             });
           })
-          .catch( (error) => console.log(error));
+          .catch( (error) => {
+            // console.log(error)
+          });
       
     },
     methods: {
@@ -119,13 +121,12 @@
         this.date = [{ text: 'Select one', value: null }];
         if (this.form.vaccine){
           this.vacAndDate.forEach(function(item, index, array) {
-            console.log(item.key);
+            // console.log(item.key);
             if (item.key == __this.form.vaccine){
               __this.date.push(item.value)
             }
           })
         }
-
         __this.date.sort();
 
       },
@@ -133,20 +134,20 @@
         if (this.form.date==null) alert("Please Choose Date!")
         else{
           event.preventDefault()
-          console.log(this.vaccine_type);
+          // console.log(this.vaccine_type);
           const reserveData = { id: this.form.employeeID, username: this.form.username, date: this.form.date, vaccine_type: this.form.vaccine };
-          console.log(reserveData);
+          // console.log(reserveData);
           axios
               .post('https://happyclick-healthcenter.herokuapp.com/saveReserve',reserveData)
               .then(res => {
-                console.log("res status", res.status);
-                console.log('res data:', res.data);
-
+                // console.log("res status", res.status);
+                // console.log('res data:', res.data);
                 alert(res.data.msg);
                 this.$router.push('/check');
-
               })
-              .catch( (error) => console.log(error));
+              .catch( (error) => {
+                // console.log(error)
+              });
         }
       },
       onReset(event) {
