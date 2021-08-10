@@ -15,6 +15,8 @@ Vue.prototype.$ajax = axios
 // plugin setup
 Vue.use(DashboardPlugin);
 
+//for deploy on heroku
+axios.defaults.withCredentials = true
 
 //prevent localStorage be modified
 window.addEventListener('storage', (e) =>{
