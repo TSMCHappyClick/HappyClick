@@ -60,19 +60,9 @@
                               :rules="{required: true, min: 6}"
                               v-model="model.password">
                   </base-input>
-                  <div class="text-muted font-italic"><small>password strength: <span
-                    class="text-success font-weight-700">strong</span></small></div>
-                  <b-row class=" my-4">
-                    <b-col cols="12">
-                      <base-input :rules="{ required: { allowFalse: false } }" name=Privacy Policy>
-                        <b-form-checkbox v-model="model.agree">
-                          <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
-                        </b-form-checkbox>
-                      </base-input>
-                    </b-col>
-                  </b-row>
+
                   <div class="text-center">
-                    <b-button type="submit" variant="primary" class="mt-4">Create account</b-button>
+                    <b-button type="submit" @click="onSubmit" variant="primary" class="mt-4">Create account</b-button>
                   </div>
                 </b-form>
               </validation-observer>
@@ -93,14 +83,13 @@
           name: '',
           employeeID: '',
           email: '',
-          password: '',
-          agree: false
+          password: ''
         }
       }
     },
     methods: {
       onSubmit() {
-        // this will be called only after form is valid. You can do an api call here to register users
+        alert('You don\'t have to register. Please login by your tsmc account, thanks.')
       }
     }
 

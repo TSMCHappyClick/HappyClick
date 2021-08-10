@@ -101,13 +101,15 @@
       axios
         .get('https://happyclick-healthcenter.herokuapp.com/searchFormdata', {params:{"date": date}})
         .then(res => {
-          console.log(res.data);
+          // console.log(res.data);
           res.data.forEach(function(item) {
-            console.log(item);
+            // console.log(item);
             __this.items.push({form_id: item.form_id, employeeID: item.id, name: item.username, vaccine: item.vaccine_type})
           });
         })
-          .catch( (error) => console.log(error));
+        .catch( (error) => {
+          // console.log(error)
+        });
     },
     methods: {
       myconfirm (item, index, target) {
@@ -122,9 +124,13 @@
         axios
           .post('https://happyclick-healthcenter.herokuapp.com/updateVaccinated', vaccinatedData)
           .then(res => {
-            console.log(res.data);
+            // console.log(res.data);
+            alert("Update Successfully!");
           })
-          .catch( (error) => console.log(error));
+          .catch( (error) => {
+            // console.log(error);
+            alert('Update failed!');
+          });
       },
       onSubmit(event) {
         event.preventDefault()
@@ -132,9 +138,12 @@
         axios
         .post('https://happyclick-healthcenter.herokuapp.com/updateVaccine', JSON.stringify(this.addVaccineForm))
         .then(res => {
-          console.log(res.data);
+          // console.log(res.data);
+          alert('The vaccine data update successfully!');
         })
-          .catch( (error) => console.log(error));
+          .catch( (error) => {
+            // console.log(error)
+          });
         
       },
       onReset(event) {

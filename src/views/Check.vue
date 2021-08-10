@@ -64,7 +64,7 @@
       }
     },
     created() {
-      console.log(localStorage.id)
+      // console.log(localStorage.id)
       axios
           .get('https://happyclick-healthcenter.herokuapp.com/checkReserve', {params:{"id": localStorage.id}})
           .then(res => {
@@ -73,7 +73,9 @@
             this.items[0].vaccine_type = res.data.vaccine_type;
             this.items[0].date = res.data.date;
           })
-          .catch( (error) => console.log(error));
+          .catch( (error) => {
+            // console.log(error)
+          });
     },
     methods: {
       myconfirm () {
@@ -91,7 +93,10 @@
             alert(res.data.msg);
             this.$router.push('/reserve');
           })
-          .catch( (error) => console.log(error));
+          .catch( (error) => {
+            // console.log(error)
+            alert('Remove reservation failed!')
+          });
       },
       countDownChanged(dismissCountDown) {
         this.dismissCountDown = dismissCountDown

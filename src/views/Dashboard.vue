@@ -8,7 +8,7 @@
           <stats-card title="龍潭廠區疫苗施打率"
                       type="gradient-red"
                       sub-title="0.51%"
-                      icon="fas fa-syringe"
+                      icon="ni ni-chart-bar-32"
                       class="mb-4">
                       <h3>龍潭廠區疫苗施打率: {{regionData.rate_1 }}%</h3>
           </stats-card>
@@ -16,7 +16,7 @@
         <b-col xl="3" md="6">
           <stats-card title="竹科廠區疫苗施打率"
                       type="gradient-orange"
-                      icon="fas fa-syringe"
+                      icon="ni ni-chart-bar-32"
                       class="mb-4">
                       <h3>竹科廠區疫苗施打率: {{ regionData.rate_2 }}%</h3>
           </stats-card>
@@ -27,7 +27,7 @@
           <stats-card title="中科廠區疫苗施打率"
                       type="gradient-yellow"
                       sub-title="0.43%"
-                      icon="fas fa-syringe"
+                      icon="ni ni-chart-bar-32"
                       class="mb-4">
                       <h3>中科廠區疫苗施打率: {{ regionData.rate_3 }}%</h3>
           </stats-card>
@@ -37,7 +37,7 @@
           <stats-card title="南科廠區疫苗施打率"
                       type="gradient-green"
                       sub-title="0.47%"
-                      icon="fas fa-syringe"
+                      icon="ni ni-chart-bar-32"
                       class="mb-4">
                       <h3>南科廠區疫苗施打率: {{ regionData.rate_4 }}%</h3>
           </stats-card>
@@ -47,7 +47,7 @@
           <stats-card title="中國廠區疫苗施打率"
                       type="gradient-info"
                       sub-title="0.48%"
-                      icon="fas fa-syringe"
+                      icon="ni ni-chart-bar-32"
                       class="mb-4">
                       <h3>中國廠區疫苗施打率: {{ regionData.rate_5 }}%</h3>
           </stats-card>
@@ -57,7 +57,7 @@
           <stats-card title="美國廠區疫苗施打率"
                       type="gradient-purple"
                       sub-title="12.76%"
-                      icon="fas fa-syringe"
+                      icon="ni ni-chart-bar-32"
                       class="mb-4">
                       <h3>美國廠區疫苗施打率: {{ regionData.rate_6 }}%</h3>
           </stats-card>
@@ -67,7 +67,7 @@
           <stats-card title="新加坡廠區疫苗施打率"
                       type="gradient-default"
                       sub-title="0.51%"
-                      icon="fas fa-syringe"
+                      icon="ni ni-chart-bar-32"
                       class="mb-4">
                       <h3>新加坡廠區疫苗施打率: {{ regionData.rate_7 }}%</h3>
           </stats-card>
@@ -173,15 +173,14 @@
             __this.regionData.rate_7 = Math.round(res.data['新加坡']*10000)/100;
           })
           .catch( (error) => console.log(error));
+          
       //get data for barChart 
-
-      console.log("ORIGINAL:",typeof(this.redBarChart.chartData.datasets[0].data));
       axios
           .get('https://happyclick-healthcenter.herokuapp.com/find_fac_shot_rate')
           .then(res => {
-            console.log("test");
-            console.log(res.data);
-            console.log("FAC:",res.data.factories);
+            // console.log("test");
+            // console.log(res.data);
+            // console.log("FAC:",res.data.factories);
 
             __this.redBarChart= {
               chartData: {
@@ -193,11 +192,9 @@
               },
               extraOptions: chartConfigs.blueChartOptions
             }
-            // {'factorys':['F12A', 'F12B', 'F2', 'F3', 'F5', 'F6', 'F8', 'F15A', 'F15B', 'F14A', 'F14B', 'F18', 'F16', 'F10', 'F11', 'SSMC', 'AP1', 'AP2', 'AP3', 'AP5'],
-            // 'rate':[0.6666666666666666, 0.2, 0.625, 0.3333333333333333, 0.6, 1.0, 0.0, 0.25, 0.25, 0.625, 0.2857142857142857, 0.8, 0.625, 0.5, 0.25, 0.42857142857142855, 0.25, 0.16666666666666666, 0.0, 0.3333333333333333]}
           })
           .catch( (error) => console.log(error));
-          console.log("AFTERALL:",this.redBarChart.chartData.labels)
+          // console.log("AFTERALL:",this.redBarChart.chartData.labels)
     }
   };
 </script>
