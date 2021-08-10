@@ -30,7 +30,7 @@
         </sidebar-item>
 
         <sidebar-item
-                  v-if = 'identity == "med"'
+                  
                   :link="{
                     name: 'HealthCenterOnly',
                     path: '/health',

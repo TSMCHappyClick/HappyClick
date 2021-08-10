@@ -51,21 +51,25 @@
                     v-model="addVaccineForm.date"
                     placeholder="Enter availible vaccination date"
                     required
+                    type="date"
+                    min="2021-08-08"
+                    max="2021-08-30"
                   ></b-form-input>
+                  <p>{{ addVaccineForm.date }}</p>
                 </b-form-group>
-
                 <b-form-group id="input-group-3" label="Amount:" label-for="input-3">
                   <b-form-input
                     id="input-3"
                     v-model="addVaccineForm.vaccine_amount"
                     placeholder="Enter availible doses of vaccine"
                     required
+                    type="number"
+                    min="1" max="999"
                   ></b-form-input>
                 </b-form-group>
 
                 <b-button type="submit" variant="primary">Submit</b-button>
                 <b-button type="reset" variant="danger">Reset</b-button>
-
             </b-form>
           </b-card>  
     </div>
@@ -94,7 +98,6 @@
       var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
       date = moment(String(date)).format('YYYY-MM-DD')
       console.log(date);
-      
       axios
         .get('https://happyclick-healthcenter.herokuapp.com/searchFormdata', {params:{"date": date}})
         .then(res => {
