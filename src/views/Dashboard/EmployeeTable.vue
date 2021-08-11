@@ -51,13 +51,13 @@
               console.log(item);
               __this.tableData.push({
                   'id': item,
-                  'status': this.$t('OTHERS.Shot')
+                  'status': __this.$t('OTHERS.Shot')
               });
             })
             res.data.not_shot.forEach(function(item) {
               __this.tableData.push({
                   'id': item,
-                  'status': this.$t('OTHERS.Not_Shot')
+                  'status': __this.$t('OTHERS.Not_Shot')
               });
             });
           });
