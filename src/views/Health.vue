@@ -80,7 +80,7 @@
   export default {
     data() {
       return {
-        fields: ['employeeID', 'name', 'vaccine', 'status'],
+        fields: ['employeeID', 'name', 'vaccine', ''],
         items:[],
         addVaccineForm: {
           vaccine_type: null,

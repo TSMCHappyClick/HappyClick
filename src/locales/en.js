@@ -8,7 +8,7 @@ export const locale = {
       USA: 'United States Vaccination Rate',
       SIG: 'Singapore Vaccination Rate',
       Each_Fab: 'Vaccination Rate of Each Fab',
-      Shot_Rate: 'Vaccine delivery ratio(%)'
+      Shot_Rate: 'Vaccine delivery ratio'
     },
     CHECK:{
       Res_Info: 'Your Vaccine Reservation',

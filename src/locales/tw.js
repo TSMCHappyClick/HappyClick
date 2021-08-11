@@ -8,7 +8,7 @@ export const locale = {
       USA: '美國廠區疫苗施打率',
       SIG: '新加坡廠區疫苗施打率',
       Each_Fab: '各廠區施打率',
-      Shot_Rate: '施打疫苗比率(%)'
+      Shot_Rate: '施打疫苗比率'
     },
     CHECK:{
         Res_Info: '您的預約資訊',
