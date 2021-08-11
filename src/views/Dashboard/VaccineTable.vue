@@ -13,7 +13,7 @@
       class="table-responsive table"
       :data="tableData"
       header-row-class-name="thead-light">
-      <el-table-column :label="$('OTHERS.Vaccine_Type')" min-width="115px" prop="name">
+      <el-table-column :label=" $t('OTHERS.Vaccine_Type') " min-width="115px" prop="name">
         <template v-slot="{row}">
           <div class="font-weight-600">{{row.name}}</div>
         </template>
