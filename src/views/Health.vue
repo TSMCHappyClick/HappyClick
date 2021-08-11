@@ -16,24 +16,24 @@
             </b-container>
         </b-container>
         </div>
-            <b-card class="mt-3" header="今日預約施打疫苗名單" header-bg-variant="info" header-text-variant="white">
+            <b-card class="mt-3" :header="$t('Health.Res_LIst')" header-bg-variant="info" header-text-variant="white">
                 <b-card-text>
-                每天於疫苗施打完畢後 (17:00)，更新已施打疫苗的員工資料。
+                {{ $t('HEALTH.Health_Note') }}
                 </b-card-text>
 
-                <b-card-text>請勾選施打狀態。</b-card-text>
+                <b-card-text>{{ $t('HEALTH.Please_Check') }}</b-card-text>
 
 
                 <b-table striped hover :items="items" :fields="fields">
                     <template v-slot:cell(status)="row">
                         <base-button size="sm" @click="myconfirm(row.item)" class="mr-1" >
-                            已施打
+                            {{ $t('HEALTH.Check_Button') }}
                         </base-button>
                     </template>
                 </b-table>
             </b-card>
 
-            <b-card class="mt-3" header="新增疫苗資訊" header-bg-variant="default" header-text-variant="white">
+            <b-card class="mt-3" :header="$t('Health.Add_Vacc')" header-bg-variant="default" header-text-variant="white">
               <b-form @submit="onSubmit" @reset="onReset" v-if="show">
 
                 <b-form-group id="input-group-1" label="Vaccine Type:" label-for="input-1">
@@ -80,7 +80,7 @@
   export default {
     data() {
       return {
-        fields: ['employeeID', 'name', 'vaccine', 'status'],
+        fields: ['employeeID', 'name', 'vaccine', ''],
         items:[],
         addVaccineForm: {
           vaccine_type: null,
@@ -114,7 +114,7 @@
     methods: {
       myconfirm (item, index, target) {
         const vaccinatedData = {"form_id": item.form_id, "id": item.employeeID, "username": item.name};
-        if(confirm('請確認已施打人員之資料，確定修改嗎?')==true){
+        if(confirm(this.$t('HEALTH.Confirm'))==true){
           this.ckeckVaccinated(vaccinatedData)
           this.created()
         }

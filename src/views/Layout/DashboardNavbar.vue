@@ -14,7 +14,12 @@
         </a>
       </li>
     </b-navbar-nav>
+    
     <b-navbar-nav class="align-items-center ml-auto ml-md-0">
+    <div>
+              <b-button data-lang="tw" @click="setLang">中文</b-button>
+              <b-button data-lang="en" @click="setLang">English</b-button>
+    </div>
       <base-dropdown menu-on-right
                      class="nav-item"
                      tag="li"
@@ -81,14 +86,15 @@ export default {
       username: localStorage.username
     };
   },
-  // mounted:{
-  //   detect(){
-  //     window.addEventListener('storage', (e) => {
-  //     localStorage.setItem(e.key, e.oldValue)
-  //     })
-  //   }
-  // },
   methods: {
+    setActiveLanguage(lang) {
+      localStorage.setItem('language', lang)
+    },
+    setLang(evt) {
+      const lang = evt.target.dataset.lang
+      this.setActiveLanguage(lang)
+      return history.go(0)
+    },
     capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     },

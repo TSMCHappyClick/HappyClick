@@ -20,7 +20,7 @@
     
     <!-- Card stats -->
     <!-- Header -->
-    <b-card class="mt-3" header="疫苗預約資訊" header-bg-variant="default" header-text-variant="white">
+    <b-card class="mt-3" :header="$t('RESERVATION.Reserve_Info')" header-bg-variant="default" header-text-variant="white">
       <b-form @submit="onSubmit" @reset="onReset" v-if="show">
         <b-form-group
           id="input-group-1"

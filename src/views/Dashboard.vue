@@ -10,7 +10,7 @@
                       sub-title="0.51%"
                       icon="ni ni-chart-bar-32"
                       class="mb-4">
-                      <h3>龍潭廠區疫苗施打率: {{regionData.rate_1 }}%</h3>
+                      <h3>{{ $t('DASHBOARD.LT') }}: {{regionData.rate_1 }}%</h3>
           </stats-card>
         </b-col>
         <b-col xl="3" md="6">
@@ -18,7 +18,7 @@
                       type="gradient-orange"
                       icon="ni ni-chart-bar-32"
                       class="mb-4">
-                      <h3>竹科廠區疫苗施打率: {{ regionData.rate_2 }}%</h3>
+                      <h3>{{ $t('DASHBOARD.HC') }}: {{ regionData.rate_2 }}%</h3>
           </stats-card>
           
         </b-col>
@@ -29,7 +29,7 @@
                       sub-title="0.43%"
                       icon="ni ni-chart-bar-32"
                       class="mb-4">
-                      <h3>中科廠區疫苗施打率: {{ regionData.rate_3 }}%</h3>
+                      <h3>{{ $t('DASHBOARD.TC') }}: {{ regionData.rate_3 }}%</h3>
           </stats-card>
         </b-col>
 
@@ -39,7 +39,7 @@
                       sub-title="0.47%"
                       icon="ni ni-chart-bar-32"
                       class="mb-4">
-                      <h3>南科廠區疫苗施打率: {{ regionData.rate_4 }}%</h3>
+                      <h3>{{ $t('DASHBOARD.TN') }}: {{ regionData.rate_4 }}%</h3>
           </stats-card>
         </b-col>
 
@@ -49,7 +49,7 @@
                       sub-title="0.48%"
                       icon="ni ni-chart-bar-32"
                       class="mb-4">
-                      <h3>中國廠區疫苗施打率: {{ regionData.rate_5 }}%</h3>
+                      <h3>{{ $t('DASHBOARD.CHINA') }}: {{ regionData.rate_5 }}%</h3>
           </stats-card>
         </b-col>
 
@@ -59,7 +59,7 @@
                       sub-title="12.76%"
                       icon="ni ni-chart-bar-32"
                       class="mb-4">
-                      <h3>美國廠區疫苗施打率: {{ regionData.rate_6 }}%</h3>
+                      <h3>{{ $t('DASHBOARD.USA') }}: {{ regionData.rate_6 }}%</h3>
           </stats-card>
         </b-col>
 
@@ -69,7 +69,7 @@
                       sub-title="0.51%"
                       icon="ni ni-chart-bar-32"
                       class="mb-4">
-                      <h3>新加坡廠區疫苗施打率: {{ regionData.rate_7 }}%</h3>
+                      <h3>{{ $t('DASHBOARD.SIG') }}: {{ regionData.rate_7 }}%</h3>
           </stats-card>
         </b-col>
 
@@ -83,7 +83,7 @@
           <card header-classes="bg-transparent">
             <b-row align-v="center" slot="header">
               <b-col>
-                <h5 class="h3 mb-0">各廠區施打率(%)</h5>
+                <h5 class="h3 mb-0">{{ $t('DASHBOARD.Each_Fab') }}(%)</h5>
               </b-col>
             </b-row>
 
@@ -146,7 +146,7 @@
           chartData: {
             labels: [],
             datasets: [{
-              label: '施打疫苗比率(%)',
+              label: this.$t('DASHBOARD.Shot_Rate'),
               data: []
             }]
           },
@@ -162,8 +162,8 @@
       axios
           .get('https://happyclick-healthcenter.herokuapp.com/find_division_shot_rate')
           .then(res => {
-            console.log(res.data);
-            console.log(res.data['竹科'])
+            // console.log(res.data);
+            // console.log(res.data['竹科'])
             __this.regionData.rate_1 = Math.round(res.data['龍潭封測廠']*10000)/100;
             __this.regionData.rate_2 = Math.round(res.data['竹科']*10000)/100;
             __this.regionData.rate_3 = Math.round(res.data['中科']*10000)/100;
@@ -186,7 +186,7 @@
               chartData: {
                 labels: res.data.factories,
                 datasets: [{
-                  label: '施打疫苗比率(%)',
+                  label: this.$t('DASHBOARD.Shot_Rate'),
                   data: res.data.rate
                 }]
               },
