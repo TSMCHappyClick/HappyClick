@@ -16,7 +16,7 @@
     </b-navbar-nav>
     
     <b-navbar-nav class="align-items-center ml-auto ml-md-0">
-      <div>
+    <div>
               <b-button data-lang="tw" @click="setLang">中文</b-button>
               <b-button data-lang="en" @click="setLang">English</b-button>
     </div>

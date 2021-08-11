@@ -24,9 +24,9 @@ axios.defaults.withCredentials = true
 
 //prevent localStorage be modified
 window.addEventListener('storage', (e) =>{
-  // if (e.key!='language'){
-  //   localStorage.setItem(e.key, e.oldValue)
-  // }
+  if (e.key!='language'){
+    localStorage.setItem(e.key, e.oldValue)
+  }
 })
 
 
