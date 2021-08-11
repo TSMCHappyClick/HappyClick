@@ -16,7 +16,7 @@
             </b-container>
         </b-container>
         </div>
-            <b-card class="mt-3" :header="$t('Health.Res_LIst')" header-bg-variant="info" header-text-variant="white">
+            <b-card class="mt-3" :header="$t('Health.Res_List')" header-bg-variant="info" header-text-variant="white">
                 <b-card-text>
                 {{ $t('HEALTH.Health_Note') }}
                 </b-card-text>
