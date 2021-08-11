@@ -24,7 +24,7 @@
                 <b-card class="mt-3" header="疫苗預約資訊" header-bg-variant="default" header-text-variant="white">
                     <b-card-text>
                       提醒您，請確認您的預約接種時間是否正確，若需修改請先按下方"刪除預約資料"再至
-                      <b-link href="/reserve#/reserve">Reservation頁面</b-link>新增一筆預約
+                      <b-link href="/HappyClick#/reserve">Reservation頁面</b-link>新增一筆預約
                     </b-card-text>
 
                     <b-card-text>
