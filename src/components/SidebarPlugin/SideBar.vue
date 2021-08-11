@@ -12,6 +12,10 @@
 
             <slot name="mobile-right">
                 <ul class="nav align-items-center d-md-none">
+                  <div>
+                            <b-button data-lang="tw" @click="setLang">中文</b-button>
+                            <b-button data-lang="en" @click="setLang">English</b-button>
+                  </div>
                     <base-dropdown class="nav-item" menu-on-right tag="li" title-tag="a">
                         <a slot="title-container" class="nav-link" href="#" role="button">
                             <div class="media align-items-center">

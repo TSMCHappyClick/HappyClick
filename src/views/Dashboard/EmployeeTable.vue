@@ -3,7 +3,7 @@
     <template v-slot:header>
       <b-row align-v="center">
         <b-col>
-          <h3 class="mb-0">所屬員工疫苗施打情形</h3>
+          <h3 class="mb-0">{{ $t('OTHERS.Employee') }}</h3>
         </b-col>
       </b-row>
     </template>
@@ -12,9 +12,9 @@
       class="table-responsive table"
       :data="tableData"
       header-row-class-name="thead-light">
-      <el-table-column label="工號" min-width="115px" prop="id">
+      <el-table-column :label="$t('OTHERS.Employee_ID')" min-width="115px" prop="id">
       </el-table-column>
-      <el-table-column label="施打狀態" min-width="115px" prop="status">
+      <el-table-column :label="$t('OTHERS.Status')" min-width="115px" prop="status">
       </el-table-column>
      
     </el-table>
@@ -51,13 +51,13 @@
               console.log(item);
               __this.tableData.push({
                   'id': item,
-                  'status': '已施打'
+                  'status': this.$t('OTHERS.Shot')
               });
             })
             res.data.not_shot.forEach(function(item) {
               __this.tableData.push({
                   'id': item,
-                  'status': '未施打'
+                  'status': this.$t('OTHERS.Not_Shot')
               });
             });
           });
