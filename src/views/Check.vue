@@ -21,10 +21,10 @@
         </div>
             
             <b-card-group deck>
-                <b-card class="mt-3" header="疫苗預約資訊" header-bg-variant="default" header-text-variant="white">
+                <b-card class="mt-3" :header="$t('CHECK.Res_Info')" header-bg-variant="default" header-text-variant="white">
                     <b-card-text>
-                      提醒您，請確認您的預約接種時間是否正確，若需修改請先按下方"刪除預約資料"再至
-                      <b-link href="/reserve#/reserve">Reservation頁面</b-link>新增一筆預約
+                      {{ $t('CHECK.ResInfo_Note_1') }}
+                      <b-link href="/HappyClick#/reserve">Reservation</b-link>{{ $t('CHECK.ResInfo_Note_2') }}
                     </b-card-text>
 
                     <b-card-text>
@@ -38,15 +38,13 @@
                           @dismissed="dismissCountDown=0"
                           @dismiss-count-down="countDownChanged"
                         >
-                          您的預約資料已刪除，請重新預約! {{ dismissCountDown }} 
+                          {{ $t('CHECK.Del_Success') }}{{ dismissCountDown }} 
                         </b-alert>
                         <b-button @click="myconfirm" variant="info" class="m-1" v-if= "this.items[0].vaccine_type!=null">
-                          刪除預約資料
+                          {{ $t('CHECK.Del_Button') }}
                         </b-button>
                     </b-card-text>
-
                 </b-card>
-
             </b-card-group>
     </div>
 </template>
@@ -79,7 +77,7 @@
     },
     methods: {
       myconfirm () {
-        if(confirm('確定要刪除嗎? 刪除後不可恢復 只能重新預約~')==true){
+        if(confirm(this.$t('CHECK.Confirm'))==true){
           this.handleDelete()
         }
       },

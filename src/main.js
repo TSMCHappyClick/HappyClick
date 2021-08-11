@@ -2,6 +2,10 @@ import Vue from 'vue';
 import DashboardPlugin from './plugins/dashboard-plugin';
 import App from './App.vue';
 
+import i18n from './vue-i18n'
+Vue.config.productionTip = false
+Vue.use(i18n);
+
 // router setup
 import router from './routes/router';
 
@@ -28,5 +32,6 @@ window.addEventListener('storage', (e) =>{
 new Vue({
   el: '#app',
   render: h => h(App),
-  router
+  router,
+  i18n
 });

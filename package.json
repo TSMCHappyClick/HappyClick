@@ -33,6 +33,7 @@
     "vue-chartjs": "^3.5.0",
     "vue-clipboard2": "^0.3.0",
     "vue-flatpickr-component": "^8.1.2",
+    "vue-i18n": "^8.25.0",
     "vue-router": "^3.0.6",
     "vue-router-user-roles": "^0.1.92",
     "vue2-transitions": "^0.2.3"
@@ -40,12 +41,13 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",
-    "@vue/cli-service": "^3.7.0",
+    "@vue/cli-service": "^4.5.13",
     "@vue/eslint-config-prettier": "^4.0.1",
     "babel-plugin-component": "^1.1.0",
     "crypto-js": "^4.1.1",
     "gh-pages": "^3.2.3",
-    "node-sass": "^4.12.0",
+    "node-sass": "^6.0.1",
+    "sass": "^1.37.5",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.6.11"
   },

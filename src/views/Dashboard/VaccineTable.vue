@@ -3,7 +3,7 @@
     <template v-slot:header>
       <b-row align-v="center">
         <b-col>
-          <h3 class="mb-0">各品牌疫苗施打比例(%)</h3>
+          <h3 class="mb-0">{{ $t('OTHERS.Each_Brand') }}</h3>
         </b-col>
       </b-row>
     </template>
@@ -13,7 +13,7 @@
       class="table-responsive table"
       :data="tableData"
       header-row-class-name="thead-light">
-      <el-table-column label="疫苗品牌" min-width="115px" prop="name">
+      <el-table-column :label="$('OTHERS.Vaccine_Type')" min-width="115px" prop="name">
         <template v-slot="{row}">
           <div class="font-weight-600">{{row.name}}</div>
         </template>
